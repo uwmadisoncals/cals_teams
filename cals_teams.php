@@ -81,7 +81,7 @@ function create_cals_teams_taxonomies(){
 add_action( 'init', 'create_cals_teams_taxonomies');
 
 
-
+///FIELD DEFINITIONS
 
 //fields. Prefixed by "field_"
 $field_office_location = array(
@@ -102,7 +102,7 @@ $field_office_location2 = array(
   );
 
 
-//metabox
+//metabox args
 $mbox = array(
   'id'=>'cals_teams_mbox_0',//HTML ID
   'title'=>'Team Member Data',//MetaBox Title
@@ -111,11 +111,6 @@ $mbox = array(
   'priority'=>'default',
   'fields'=>array($field_office_location,$field_office_location2),
   );
-
-
-
-logit($mbox,'$mbox: ');
-
 
 //add meta boxes
 function add_meta_boxes_cals_team_members($post){
@@ -126,7 +121,6 @@ function add_meta_boxes_cals_team_members($post){
 }
 add_action( 'add_meta_boxes', 'add_meta_boxes_cals_team_members' );
 
-
 //generates metabox markup on admin
 function calsteams_buildform_cb($post){
 
@@ -135,14 +129,7 @@ function calsteams_buildform_cb($post){
   $mbox_data = get_post_custom($post->ID); //get array containing metabox custom fields
 
   logit($mbox_data,'$mbox_data: ');
-  //$OL_stored_meta = get_post_custom($post->ID); //get post ID
-  //logit($OL_stored_meta,'$OL_stored_meta: ');
 
-  
-  //$text = isset( $OL_stored_meta['mb_OL_input'] ) ? esc_attr($OL_stored_meta['mb_OL_input'][0] ) : "";
-  //$text = isset( $mbox_data['the_input_id_prop'] ) ? esc_attr($mbox_data['the_input_id_prop'][0] ) : "";
-
-  //wp_nonce_field( 'cals_teams_update_OL', 'OL_nonce');
   wp_nonce_field( 'calsteams_update_field', 'calsteams_nonce');
 
   $temp_fields = $mbox['fields'];
@@ -205,25 +192,6 @@ function calsteams_mbox_save($post_id){
   }
 }
 add_action('save_post', 'calsteams_mbox_save');
-
-
-/*//save metabox data
-function meta_box_OL_save($post_id){
-    // Bail if we're doing an auto save
-  if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
-
-    // if our nonce isn't there, or we can't verify it, bail
-  if( !isset( $_POST['OL_nonce'] ) || !wp_verify_nonce( $_POST['OL_nonce'], 'cals_teams_update_OL' ) ) return;
-
-    // if our current user can't edit this post, bail
-  if( !current_user_can( 'edit_post' ) ) return;
-
-  if( isset( $_POST['mb_OL_input'] ) )
-    update_post_meta( $post_id, 'mb_OL_input', esc_attr( $_POST['mb_OL_input'] ) );
-
-}
-
-add_action('save_post','meta_box_OL_save' );*/
 
 function template_chooser($template){
   $post_id = get_the_ID();
