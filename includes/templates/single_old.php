@@ -1,22 +1,15 @@
+older single.php
+
+
 <?php get_header(); ?>
 
 <div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
 		<?php
-		$args = array('post_type'=>'cals_team_members');
-		$cals_teams_query = new WP_Query($args);
+		//global $post;
 		// Start the loop.
 		while ( have_posts() ) : the_post();
-
-			$id= $cals_teams_query->post->ID;
-
-			$meta = get_post_custom($id);
-			logit($meta,'$meta: ');
-
-			if( isset($meta['calsteams_office_location_2']) ){
-				echo $meta['calsteams_office_location_2'][0] ;
-			}
 
 			/*
 			 * Include the post format-specific template for the content. If you want to
@@ -24,6 +17,22 @@
 			 * (where ___ is the post format) and that will be used instead.
 			 */
 			get_template_part( 'content', get_post_format() );
+
+
+			$custom_meta = get_post_custom($GLOBALS['post']->ID);
+			logit($custom_meta,'$custom_meta: ');
+
+			$newAr = array();
+
+			$allowedKeys = array('calsteams_office_location_2','calsteams_office_location');
+
+			foreach ( $allowedKeys as $key) {
+			$newAr[$key] = $custom_meta[$key]; unset( $custom_meta[$key] );
+			}
+			logit($newAr,'$newAr: ');
+
+			//echo $myMeta['mb_OL_input'][0];
+			
 
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :

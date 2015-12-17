@@ -12,7 +12,10 @@
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
+include( plugin_dir_path(__FILE__) .'includes/data/cals_teams_fields.php' );
 
+$spath = plugin_dir_path(__FILE__) .'includes/data/cals_teams_fields.php';
+logit($spath,'$spath: ');
 //Define Constants
 
 if(!defined('CT_PLUGIN_BASE_FILE')){
@@ -27,8 +30,7 @@ if(!defined('CT_PLUGIN_URL')){
   define('CT_PLUGIN_URL', plugin_dir_url(__FILE__));
 }
 
-//Variables
-$prefix = 'calsteams_';// 
+
 
 function create_cals_teams_post_type() {
 
@@ -81,36 +83,7 @@ function create_cals_teams_taxonomies(){
 add_action( 'init', 'create_cals_teams_taxonomies');
 
 
-///FIELD DEFINITIONS
 
-//fields. Prefixed by "field_"
-$field_office_location = array(
-  'name'=>'Offie Location',
-  'desc'=>'This is where the office is.',
-  'id'=>$prefix . 'office_location', //corresponds to input field name & id
-  'type'=>'text',
-  'std'=>'office location',//default value
-  );
-
-//field2
-$field_office_location2 = array(
-  'name'=>'Offie Location2',
-  'desc'=>'This is where the office is.',
-  'id'=>$prefix . 'office_location_2', //corresponds to input field name & id
-  'type'=>'text',
-  'std'=>'office location_2',//default value
-  );
-
-
-//metabox args
-$mbox = array(
-  'id'=>'cals_teams_mbox_0',//HTML ID
-  'title'=>'Team Member Data',//MetaBox Title
-  'screen'=>'cals_team_members',//custom post type slug
-  'context'=>'normal',//display location
-  'priority'=>'default',
-  'fields'=>array($field_office_location,$field_office_location2),
-  );
 
 //add meta boxes
 function add_meta_boxes_cals_team_members($post){
@@ -132,15 +105,7 @@ function calsteams_buildform_cb($post){
 
   wp_nonce_field( 'calsteams_update_field', 'calsteams_nonce');
 
-  $temp_fields = $mbox['fields'];
-  $temp_field_id = $temp_fields['id'];
-
-  logit($temp_fields,'$temp_fields: ');
-  logit($temp_field_id,'$temp_field_id: ');
-  logit($post->ID,'$post->ID: ');
-
   echo '<table class="form-table">';
-
 
   foreach ($mbox['fields'] as $field) {
 
