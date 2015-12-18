@@ -9,13 +9,34 @@
 		// Start the loop.
 		while ( have_posts() ) : the_post();
 
-			$id= $cals_teams_query->post->ID;
+			$meta = get_post_custom(get_the_ID());
 
-			$meta = get_post_custom($id);
 			logit($meta,'$meta: ');
+			logit($cals_teams_query, '$cals_teams_query');
 
+/*			//This is bad b/c I want to display label&data without needing to know meta key
 			if( isset($meta['calsteams_office_location_2']) ){
 				echo $meta['calsteams_office_location_2'][0] ;
+			}*/
+
+			foreach ($meta as $key => $value) {
+/*				echo "key: $key, value: $value[0] <br>";
+
+				if($key =='calsteams_office_location'){
+					echo "Office Location: " . $value[0]; 
+				}*/
+
+				switch($key){
+					case 'calsteams_office_location':
+					echo "Office Location: " . $value[0];
+					break;
+
+				default:
+					continue;
+				}
+
+				//echo $key . '';
+				//echo $key[$value] . '<br>';
 			}
 
 			/*
