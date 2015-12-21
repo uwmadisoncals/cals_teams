@@ -22,7 +22,7 @@ get_header(); ?>
 		$meta = apply_filters( 'theme_filter_meta_array', FALSE );
 
 		$mbox_fields = $mbox['fields'];
-		logit($mbox_fields,'$mbox_fields');
+		//logit($mbox_fields,'$mbox_fields');
 
 			/*
 			 * Include the post format-specific template for the content. If you want to
