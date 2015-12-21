@@ -67,7 +67,7 @@ Class Cals_Teams{
 
 function create_cals_teams_post_type() {
 
-  register_post_type( 'cals_team_members',
+  register_post_type( 'team',
     array(
       'labels' => array(
         'name' => __( 'Team Members','cals_teams' ),
@@ -94,7 +94,7 @@ add_action( 'init', 'create_cals_teams_post_type' );
 
 function create_cals_teams_taxonomies(){
 
-  register_taxonomy('cals_groups','cals_team_members',
+  register_taxonomy('cals_groups','team',
 
     array(
       'labels'=>array(
@@ -110,7 +110,7 @@ function create_cals_teams_taxonomies(){
 
     );
 
-  register_taxonomy_for_object_type( 'cals_groups', 'cals_team_members' );
+  register_taxonomy_for_object_type( 'cals_groups', 'team' );
 
 }
 add_action( 'init', 'create_cals_teams_taxonomies');
@@ -119,13 +119,13 @@ add_action( 'init', 'create_cals_teams_taxonomies');
 
 
 //add meta boxes
-function add_meta_boxes_cals_team_members($post){
+function add_meta_boxes_team($post){
 
   global $mbox;
 
   add_meta_box($mbox['id'],$mbox['title'], 'calsteams_buildform_cb',$mbox['screen'],$mbox['context']);
 }
-add_action( 'add_meta_boxes', 'add_meta_boxes_cals_team_members' );
+add_action( 'add_meta_boxes', 'add_meta_boxes_team' );
 
 //generates metabox markup on admin
 function calsteams_buildform_cb($post){
@@ -193,9 +193,9 @@ add_action('save_post', 'calsteams_mbox_save');
 
 function template_chooser($template){
   $post_id = get_the_ID();
-  //logit($template,'$template: '); // is /Users/ddropik/sites/cm.localhost/wp-content/themes/twentyfifteen/single.php
+  logit($template,'$template: '); // is /Users/ddropik/sites/cm.localhost/wp-content/themes/twentyfifteen/single.php
 
-  if(get_post_type($post_id) != 'cals_team_members'){
+  if(get_post_type($post_id) != 'team'){
     return $template;
   }
 

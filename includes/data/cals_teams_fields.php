@@ -15,11 +15,11 @@ $field_office_location = array(
 
 //field2
 $field_office_location2 = array(
-  'name'=>'Offie Location2',
-  'desc'=>'This is where the office is.',
-  'id'=>$prefix . 'office_location_2', //corresponds to input field name & id
+  'name'=>'Room Number',
+  'desc'=>'This is where the room is.',
+  'id'=>$prefix . 'room_number', //corresponds to input field name & id
   'type'=>'text',
-  'std'=>'office location_2',//default value
+  'std'=>'',//default value
   );
 
 
@@ -27,7 +27,7 @@ $field_office_location2 = array(
 $mbox = array(
   'id'=>'cals_teams_mbox_0',//HTML ID
   'title'=>'Team Member Data',//MetaBox Title
-  'screen'=>'cals_team_members',//custom post type slug
+  'screen'=>'team',//custom post type slug
   'context'=>'normal',//display location
   'priority'=>'default',
   'fields'=>array($field_office_location,$field_office_location2),
