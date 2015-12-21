@@ -4,12 +4,24 @@
 		<main id="main" class="site-main" role="main">
 
 		<?php
+
+		include( WP_PLUGIN_DIR . '/cals_teams/includes/data/cals_teams_fields.php' );
+
+
+		$fob = $field_office_location['name'];
+		logit($fob,'$fob');
+
+
 		$args = array('post_type'=>'cals_team_members');
 		$cals_teams_query = new WP_Query($args);
 		// Start the loop.
 		while ( have_posts() ) : the_post();
 
-			$meta = get_post_custom(get_the_ID());
+		echo 'THIS IS TEMPLATE FROM Plugin';
+
+		$plugin_template_obj = new Cals_Teams;
+
+		$meta = $plugin_template_obj->filter_meta_array();
 
 			logit($meta,'$meta: ');
 			logit($cals_teams_query, '$cals_teams_query');
@@ -20,11 +32,8 @@
 			}*/
 
 			foreach ($meta as $key => $value) {
-/*				echo "key: $key, value: $value[0] <br>";
 
-				if($key =='calsteams_office_location'){
-					echo "Office Location: " . $value[0]; 
-				}*/
+				logit($key,'$key: ');//this variable works, returns things like _edit_last_, calsteams_office_location, etc
 
 				switch($key){
 					case 'calsteams_office_location':

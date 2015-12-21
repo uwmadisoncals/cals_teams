@@ -4,7 +4,7 @@
    Plugin URI: http://wordpress.org/extend/plugins/cals_teams/
    Version: 0.1
    Author: Daniel Dropik & Al Nemec
-   Description: Define Custom templates in theme by creating folder cals_teams_templates/single.php 
+   Description: calsmain
    Text Domain: cals_teams
    License: GPLv3
   */
@@ -14,8 +14,8 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 include( plugin_dir_path(__FILE__) .'includes/data/cals_teams_fields.php' );
 
-$spath = plugin_dir_path(__FILE__) .'includes/data/cals_teams_fields.php';
-logit($spath,'$spath: ');
+//$spath = plugin_dir_path(__FILE__) .'includes/data/cals_teams_fields.php';
+//logit($spath,'$spath: ');
 //Define Constants
 
 if(!defined('CT_PLUGIN_BASE_FILE')){
@@ -30,7 +30,40 @@ if(!defined('CT_PLUGIN_URL')){
   define('CT_PLUGIN_URL', plugin_dir_url(__FILE__));
 }
 
+Class Cals_Teams{
 
+    public function __construct(){
+        $this->register_callbacks();
+    }
+
+    protected function register_callbacks(){
+        add_filter( 'theme_filter_meta_array', array( $this, 'filter_meta_array' ) ); //array first param, obj. second param name of class method
+        //add_action( 'theme_bar', array( $this, 'bar' ) );
+    }
+
+    public function filter_meta_array(){
+      $meta = get_post_custom(get_the_ID());
+
+      $meta_keys = array_keys($meta);//get an array with all $meta keys
+
+      $bad_vals = array('_edit_last','_edit_lock');//designate $meta keys for exlusion
+
+      foreach ($meta as $key => $value) {
+
+        if($key === $bad_vals[0] || $key === $bad_vals[1] ){
+          unset($meta[$key]);
+        }
+      }
+
+        //return 'foo';
+        return $meta;
+
+    }
+
+/*    public function bar(){
+        return 'bar';
+    }*/
+}
 
 function create_cals_teams_post_type() {
 
