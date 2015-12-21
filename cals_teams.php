@@ -193,9 +193,9 @@ add_action('save_post', 'calsteams_mbox_save');
 
 function template_chooser($template){
   $post_id = get_the_ID();
+  //logit($template,'$template: '); // is /Users/ddropik/sites/cm.localhost/wp-content/themes/twentyfifteen/single.php
 
   if(get_post_type($post_id) != 'cals_team_members'){
-
     return $template;
   }
 
