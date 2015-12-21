@@ -25,9 +25,9 @@
 		$plugin_template_obj = new Cals_Teams; //Instantiate Cals_Teams object
 
 
-		$meta = $plugin_template_obj->filter_meta_array(); // Filter out unwanted elements from get_post_custom
+		$meta = $plugin_template_obj->calsteams_get_post_meta(); // Filter out unwanted elements from get_post_custom
 
-		//logit($meta,'$meta: ');
+		logit($meta,'$meta: ');
 		//logit($cals_teams_query, '$cals_teams_query');
 
 			//////////////////////// INNER CONTENT ////////////////////////////////
@@ -94,7 +94,7 @@
 				<?php if(function_exists('twentyfifteen_entry_meta')){
 				twentyfifteen_entry_meta();
 				}?>
-				
+
 				<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
 			</footer><!-- .entry-footer -->
 

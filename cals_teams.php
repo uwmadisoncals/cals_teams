@@ -37,27 +37,13 @@ Class Cals_Teams{
     }
 
     protected function register_callbacks(){
-        add_filter( 'theme_filter_meta_array', array( $this, 'filter_meta_array' ) ); //array first param, obj. second param name of class method
+        add_filter( 'theme_calsteams_get_post_meta', array( $this, 'calsteams_get_post_meta' ) );
         //add_action( 'theme_bar', array( $this, 'bar' ) );
     }
 
-    public function filter_meta_array(){
+    public function calsteams_get_post_meta(){
       $meta = get_post_custom(get_the_ID());
-
-      $meta_keys = array_keys($meta);//get an array with all $meta keys
-
-      $bad_vals = array('_edit_last','_edit_lock');//designate $meta keys for exlusion
-
-      foreach ($meta as $key => $value) {
-
-        if($key === $bad_vals[0] || $key === $bad_vals[1] ){
-          unset($meta[$key]);
-        }
-      }
-
-        //return 'foo';
-        return $meta;
-
+      return $meta;
     }
 
 /*    public function bar(){
