@@ -13,13 +13,22 @@ $field_office_location = array(
   'std'=>'office location',//default value
   );
 
-//field2
+//textarea
 $field_office_location2 = array(
   'name'=>'Room Number',
   'desc'=>'This is where the room is.',
   'id'=>$prefix . 'room_number', //corresponds to input field name & id
-  'type'=>'text',
+  'type'=>'textarea',
   'std'=>'',//default value
+  );
+
+//selectbox
+$field_name_prefix = array(
+  'name'=>'Name Prefix',
+  'desc'=>'This is where the room is.',
+  'id'=>$prefix . 'name_prefix', //corresponds to input field name & id
+  'type'=>'select',
+  'options'=>array('Mr.','Mrs.','Ms.')
   );
 
 
@@ -30,6 +39,8 @@ $mbox = array(
   'screen'=>'team',//custom post type slug
   'context'=>'normal',//display location
   'priority'=>'default',
-  'fields'=>array($field_office_location,$field_office_location2),
+  'fields'=>array($field_office_location,
+                  $field_office_location2,
+                  $field_name_prefix),
   );
  ?>

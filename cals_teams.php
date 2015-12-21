@@ -130,6 +130,8 @@ function calsteams_buildform_cb($post){
 
     $meta = get_post_meta($post->ID,$field['id'],true); //get meta-box data for current field
 
+    logit($meta,'$meta: ');
+
     echo '<tr>',
                 '<th style="width:20%"><label for="', $field['id'], '">', $field['name'], '</label></th>',
                 '<td>';
@@ -137,6 +139,18 @@ function calsteams_buildform_cb($post){
                 switch ($field['type']) {
                   case 'text':
                     echo '<input type="text" name="', $field['id'], '" id="', $field['id'], '" value="', $meta ? $meta : $field['std'], '" size="30" style="width:97%" />', '<br />', $field['desc'];
+                    break;
+
+                  case 'textarea':
+                    echo '<textarea name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="4" style="width:97%">', $meta ? $meta : $field['std'], '</textarea>', '<br />', $field['desc'];
+                    break;
+
+                  case 'select':
+                    echo '<select name="', $field['id'], '" id="', $field['id'], '">';
+                    foreach ($field['options'] as $option) {
+                      echo '<option ', $meta == $option ? ' selected="selected"' : '', '>', $option, '</option>';
+                    }
+                    echo '</select>';
                     break;
 
                   default:
