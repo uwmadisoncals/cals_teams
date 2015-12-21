@@ -1,38 +1,39 @@
-<?php get_header(); ?>
+<?php 
+//THIS IS A SAMPLE TEMPLATE. To use it follow these directions:
+// 1. Create a Directory in the root level of your theme named exactly 'cals_teams_templates'
+// 2. Copy This Theme into said directory, keep the file name single.php
+// 3.
+get_header(); ?>
 
 <div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
 		<?php
 
-		include( WP_PLUGIN_DIR . '/cals_teams/includes/data/cals_teams_fields.php' ); //include Metabox and Metabox field group data
-
-		
-		$mbox_fields = $mbox['fields'];//Meta data for field groups
-		//logit($mbox_fields,'$mbox_fields');
-
-
-		$args = array('post_type'=>'team');//WP Query Args
-
-		$cals_teams_query = new WP_Query($args);//Instantiate New WP Query Object
-
+		$args = array('post_type'=>'team');
+		$cals_teams_query = new WP_Query($args);
 		// Start the loop.
 		while ( have_posts() ) : the_post();
 
-		//Uncomment this to debug template origin
-		echo 'THIS IS TEMPLATE FROM Plugin';
+		//Uncomment to debug template origin
+		//echo 'THIS IS TEMPLATE FROM THEME';
 
-		$plugin_template_obj = new Cals_Teams; //Instantiate Cals_Teams object
+		$myObj = new Cals_Teams;
+		$meta = apply_filters( 'theme_filter_meta_array', FALSE );
 
+		$mbox_fields = $mbox['fields'];
+		logit($mbox_fields,'$mbox_fields');
 
-		$meta = $plugin_template_obj->filter_meta_array(); // Filter out unwanted elements from get_post_custom
-
-		//logit($meta,'$meta: ');
-		//logit($cals_teams_query, '$cals_teams_query');
-
-			//////////////////////// INNER CONTENT ////////////////////////////////
+			/*
+			 * Include the post format-specific template for the content. If you want to
+			 * use this in a child theme, then include a file called called content-___.php
+			 * (where ___ is the post format) and that will be used instead.
+			 */
+			//get_template_part( 'content', get_post_format() );
+			//
+			//////////////////////////
 			?>
-			
+
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<?php
 				// Post thumbnail.
@@ -53,8 +54,7 @@
 
 			<div class="entry-content">
 				<?php
-
-				foreach ($mbox_fields as $key => $value) {
+					foreach ($mbox_fields as $key => $value) {
 					$id = $value['id'];
 
 					echo '<div class="team-item"><span class="team-item-label">';
@@ -64,7 +64,10 @@
 					echo '<span class="team-item-value">';
 					echo $meta[$id][0];
 					echo '</span></div>';
+
+
 				}
+
 
 					/* translators: %s: Name of current post */
 					the_content( sprintf(
@@ -93,16 +96,15 @@
 			<footer class="entry-footer">
 				<?php if(function_exists('twentyfifteen_entry_meta')){
 				twentyfifteen_entry_meta();
-				}?>
-				
+				} ?>
 				<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
 			</footer><!-- .entry-footer -->
 
 		</article><!-- #post-## -->
 		<?php 
 			
-			/////////////////////////// END INNER CONTENT /////////////////////////////////
 
+			////////////////////////////
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :
 				comments_template();
