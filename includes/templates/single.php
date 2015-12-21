@@ -15,6 +15,8 @@
 		$args = array('post_type'=>'team');//WP Query Args
 
 		$cals_teams_query = new WP_Query($args);//Instantiate New WP Query Object
+		logit($cals_teams_query,'$cals_teams_query');
+		logit($cals_teams_query->post->ID,'$cals_teams_query id: ');
 
 		// Start the loop.
 		while ( have_posts() ) : the_post();
@@ -28,6 +30,7 @@
 		$meta = $plugin_template_obj->calsteams_get_post_meta(); // Filter out unwanted elements from get_post_custom
 
 		logit($meta,'$meta: ');
+
 		//logit($cals_teams_query, '$cals_teams_query');
 
 			//////////////////////// INNER CONTENT ////////////////////////////////
@@ -38,6 +41,15 @@
 				// Post thumbnail.
 				if(function_exists('twentyfifteen_post_thumbnail')){
 				twentyfifteen_post_thumbnail();
+				}
+
+				//$post_thumbnail_id = get_post_thumbnail_id();//14
+
+				//$thumb = $meta['_thumbnail_id'][0];//14
+
+				if(has_post_thumbnail()){
+
+					the_post_thumbnail('full');
 				}
 			?>
 

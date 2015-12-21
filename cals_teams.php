@@ -120,7 +120,7 @@ function calsteams_buildform_cb($post){
 
   $mbox_data = get_post_custom($post->ID); //get array containing metabox custom fields
 
-  logit($mbox_data,'$mbox_data: ');
+  //logit($mbox_data,'$mbox_data: ');
 
   wp_nonce_field( 'calsteams_update_field', 'calsteams_nonce');
 
@@ -179,7 +179,7 @@ add_action('save_post', 'calsteams_mbox_save');
 
 function template_chooser($template){
   $post_id = get_the_ID();
-  logit($template,'$template: '); // is /Users/ddropik/sites/cm.localhost/wp-content/themes/twentyfifteen/single.php
+  //logit($template,'$template: '); // is /Users/ddropik/sites/cm.localhost/wp-content/themes/twentyfifteen/single.php
 
   if(get_post_type($post_id) != 'team'){
     return $template;
@@ -215,7 +215,7 @@ function ct_get_template_hierarchy( $template ) {
     // Check if a custom template exists in the theme folder, if not, load the plugin template file
     if ( $theme_file = locate_template( array( 'cals_teams_templates/' . $template ) ) ) {
         $file = $theme_file;
-        logit($file,'$file: ');
+        //logit($file,'$file: ');
 
     }
     else {
