@@ -39,9 +39,6 @@
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<?php
 				// Post thumbnail.
-				if(function_exists('twentyfifteen_post_thumbnail')){
-				twentyfifteen_post_thumbnail();
-				}
 
 				//$post_thumbnail_id = get_post_thumbnail_id();//14
 

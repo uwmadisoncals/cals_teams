@@ -37,8 +37,10 @@ get_header(); ?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<?php
 				// Post thumbnail.
-				if(function_exists('twentyfifteen_post_thumbnail')){
-				twentyfifteen_post_thumbnail();
+
+				if(has_post_thumbnail()){
+
+					the_post_thumbnail('full');
 				}
 			?>
 
