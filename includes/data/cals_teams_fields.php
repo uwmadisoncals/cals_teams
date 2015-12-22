@@ -31,6 +31,15 @@ $field_name_prefix = array(
   'options'=>array('Mr.','Mrs.','Ms.')
   );
 
+//wysiwyg editor
+$field_wsyiwyg_description = array(
+  'name'=>'Description',
+  'desc'=>'',
+  'id'=>'calsteamswysiwygdesc', //only lowercase letters per http://codex.wordpress.org/Function_Reference/wp_editor
+  'type'=>'wysiwyg',
+  'std'=>'',//default value
+  );
+
 
 //metabox args
 $mbox = array(
@@ -41,6 +50,9 @@ $mbox = array(
   'priority'=>'default',
   'fields'=>array($field_office_location,
                   $field_office_location2,
-                  $field_name_prefix),
+                  $field_name_prefix,
+                  $field_wsyiwyg_description),
   );
+
+
  ?>

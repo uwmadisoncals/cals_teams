@@ -118,6 +118,8 @@ function calsteams_buildform_cb($post){
 
   global $mbox, $post;//bring in these variables from global scope
 
+  logit($mbox,'$mbox');
+
   $mbox_data = get_post_custom($post->ID); //get array containing metabox custom fields
 
   //logit($mbox_data,'$mbox_data: ');
@@ -151,6 +153,11 @@ function calsteams_buildform_cb($post){
                       echo '<option ', $meta == $option ? ' selected="selected"' : '', '>', $option, '</option>';
                     }
                     echo '</select>';
+                    break;
+
+                  case 'wysiwyg':
+                    wp_editor(($meta ? $meta : $field['std']),$field['id']);
+                    echo $field['desc'];
                     break;
 
                   default:
