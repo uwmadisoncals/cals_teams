@@ -155,6 +155,16 @@ function calsteams_buildform_cb($post){
                     echo '</select>';
                     break;
 
+                  case 'radio':
+                    foreach ($field['options'] as $option) {
+                        echo '<input type="radio" name="', $field['id'], '" value="', $option['value'], '"', $meta == $option['value'] ? ' checked="checked"' : '', ' />', $option['name'];
+                    }
+                    break;
+
+                  case 'checkbox':
+                    echo '<input type="checkbox" name="', $field['id'], '" id="', $field['id'], '"', $meta ? ' checked="checked"' : '', ' />';
+                    break;
+
                   case 'wysiwyg':
                     $args = array('textarea_rows'=>1);
                     wp_editor(($meta ? $meta : $field['std']),$field['id'],$args);

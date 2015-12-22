@@ -58,8 +58,8 @@ $field_email = array(
   'std'=>'',//default value
   );
 
-///////////// TEXTAREA Fields //////////////////////////////
 
+///////////// TEXTAREA Fields //////////////////////////////
 
 $field_professional_title = array(
   'name'=>'Professional Title',
@@ -79,6 +79,29 @@ $field_name_prefix = array(
   'type'=>'select',
   'options'=>array('Mr.','Mrs.','Ms.','Dr.')
   );
+
+
+///////////// RADIO Fields //////////////////////////////
+$field_radio = array(
+    'name' => 'Radio',
+    'id' => $prefix . 'radio',
+    'type' => 'radio',
+    'options' => array(
+        array('name' => 'Label 1', 'value' => 'Value 1'),
+
+        array('name' => 'Label 2', 'value' => 'Value 2')
+    )
+  );
+
+
+///////////// CHECKBOX Fields ///////////////////////////
+
+$field_checkbox = array(
+      'name' => 'Checkbox',
+      'id' => $prefix . 'checkbox',
+      'type' => 'checkbox'
+  );
+
 
 ///////////// WYSIWYG Fields //////////////////////////////
 
@@ -153,7 +176,9 @@ $mbox = array(
                   $field_wsyiwyg_education,
                   $field_wsyiwyg_current_proj,
                   $field_wsyiwyg_research,
-                  $field_wsyiwyg_manuscripts),
+                  $field_wsyiwyg_manuscripts,
+                  $field_radio,
+                  $field_checkbox),
   );
 
 
