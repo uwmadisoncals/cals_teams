@@ -156,7 +156,8 @@ function calsteams_buildform_cb($post){
                     break;
 
                   case 'wysiwyg':
-                    wp_editor(($meta ? $meta : $field['std']),$field['id']);
+                    $args = array('textarea_rows'=>1);
+                    wp_editor(($meta ? $meta : $field['std']),$field['id'],$args);
                     echo $field['desc'];
                     break;
 

@@ -2,36 +2,87 @@
 ///FIELD DEFINITIONS
 
 //Variables
-$prefix = 'calsteams_';// 
+$prefix = 'calsteams_';
 
-//fields. Prefixed by "field_"
+//////////////////////////////////////////// Fields /////////////////////////////////////////////////////////////////////////
+// Naming Conventions: Be sure to namespace field variables by prefixing 'field_'
+
+
+///////////// TEXT Fields //////////////////////////////
+
 $field_office_location = array(
   'name'=>'Offie Location',
-  'desc'=>'This is where the office is.',
+  'desc'=>'',
   'id'=>$prefix . 'office_location', //corresponds to input field name & id
   'type'=>'text',
-  'std'=>'office location',//default value
-  );
-
-//textarea
-$field_office_location2 = array(
-  'name'=>'Room Number',
-  'desc'=>'This is where the room is.',
-  'id'=>$prefix . 'room_number', //corresponds to input field name & id
-  'type'=>'textarea',
   'std'=>'',//default value
   );
 
-//selectbox
+$field_first_name = array(
+  'name'=>'First Name',
+  'desc'=>'',
+  'id'=>$prefix . 'first_name', //corresponds to input field name & id
+  'type'=>'text',
+  'std'=>'',//default value
+  );
+
+$field_last_name = array(
+  'name'=>'Last Name',
+  'desc'=>'',
+  'id'=>$prefix . 'last_name', //corresponds to input field name & id
+  'type'=>'text',
+  'std'=>'',//default value
+  );
+
+$field_phone = array(
+  'name'=>'Phone',
+  'desc'=>'',
+  'id'=>$prefix . 'phone', //corresponds to input field name & id
+  'type'=>'text',
+  'std'=>'',//default value
+  );
+
+$field_fax = array(
+  'name'=>'Fax',
+  'desc'=>'',
+  'id'=>$prefix . 'fax', //corresponds to input field name & id
+  'type'=>'text',
+  'std'=>'2',//default value
+  );
+
+$field_email = array(
+  'name'=>'Email',
+  'desc'=>'',
+  'id'=>$prefix . 'email', //corresponds to input field name & id
+  'type'=>'text',
+  'std'=>'',//default value
+  );
+
+///////////// TEXTAREA Fields //////////////////////////////
+
+
+$field_professional_title = array(
+  'name'=>'Professional Title',
+  'desc'=>'',
+  'id'=>$prefix . 'professional_title', //corresponds to input field name & id
+  'type'=>'text',
+  'std'=>'',//default value
+  );
+
+
+///////////// SELECTBOX Fields //////////////////////////////
+
 $field_name_prefix = array(
   'name'=>'Name Prefix',
   'desc'=>'This is where the room is.',
   'id'=>$prefix . 'name_prefix', //corresponds to input field name & id
   'type'=>'select',
-  'options'=>array('Mr.','Mrs.','Ms.')
+  'options'=>array('Mr.','Mrs.','Ms.','Dr.')
   );
 
-//wysiwyg editor
+///////////// WYSIWYG Fields //////////////////////////////
+
+
 $field_wsyiwyg_description = array(
   'name'=>'Description',
   'desc'=>'',
@@ -40,18 +91,69 @@ $field_wsyiwyg_description = array(
   'std'=>'',//default value
   );
 
+$field_wsyiwyg_specialty = array(
+  'name'=>'Specialty',
+  'desc'=>'',
+  'id'=>'calsteamswysiwygspec', //only lowercase letters per http://codex.wordpress.org/Function_Reference/wp_editor
+  'type'=>'wysiwyg',
+  'std'=>'',//default value
+  );
 
-//metabox args
+$field_wsyiwyg_education = array(
+  'name'=>'Education',
+  'desc'=>'',
+  'id'=>'calsteamswysiwygedu', //only lowercase letters per http://codex.wordpress.org/Function_Reference/wp_editor
+  'type'=>'wysiwyg',
+  'std'=>'',//default value
+  );
+
+$field_wsyiwyg_current_proj = array(
+  'name'=>'Current Projects',
+  'desc'=>'',
+  'id'=>'calsteamswysiwygcproj', //only lowercase letters per http://codex.wordpress.org/Function_Reference/wp_editor
+  'type'=>'wysiwyg',
+  'std'=>'',//default value
+  );
+
+$field_wsyiwyg_research = array(
+  'name'=>'Research',
+  'desc'=>'',
+  'id'=>'calsteamswysiwygresearch', //only lowercase letters per http://codex.wordpress.org/Function_Reference/wp_editor
+  'type'=>'wysiwyg',
+  'std'=>'',//default value
+  );
+
+$field_wsyiwyg_manuscripts = array(
+  'name'=>'Manuscripts',
+  'desc'=>'',
+  'id'=>'calsteamswysiwygmanu', //only lowercase letters per http://codex.wordpress.org/Function_Reference/wp_editor
+  'type'=>'wysiwyg',
+  'std'=>'',//default value
+  );
+
+
+
+//////////////////////////////////////////// METABOX  /////////////////////////////////////////////////////////////////////////
 $mbox = array(
   'id'=>'cals_teams_mbox_0',//HTML ID
   'title'=>'Team Member Data',//MetaBox Title
   'screen'=>'team',//custom post type slug
   'context'=>'normal',//display location
   'priority'=>'default',
-  'fields'=>array($field_office_location,
-                  $field_office_location2,
-                  $field_name_prefix,
-                  $field_wsyiwyg_description),
+  'fields'=>array($field_name_prefix, //Order determines output on edit-post screen
+                  $field_first_name,
+                  $field_last_name,
+                  $field_professional_title,
+                  $field_phone,
+                  $field_fax,
+                  $field_email,
+                  $field_office_location,
+                  $field_wsyiwyg_description,
+                  $field_wsyiwyg_specialty,
+                  $field_wsyiwyg_education,
+                  $field_wsyiwyg_current_proj,
+                  $field_wsyiwyg_research,
+                  $field_wsyiwyg_manuscripts),
   );
 
 

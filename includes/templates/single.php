@@ -65,14 +65,17 @@
 
 				foreach ($mbox_fields as $key => $value) {
 					$id = $value['id'];
+					if(array_key_exists($id,$meta)){
+						echo '<div class="team-item"><span class="team-item-label">';
+						echo $value['name'] . ': ';
+						echo '</span>';
 
-					echo '<div class="team-item"><span class="team-item-label">';
-					echo $value['name'] . ': ';
-					echo '</span>';
-
-					echo '<span class="team-item-value">';
-					echo $meta[$id][0];
-					echo '</span></div>';
+						echo '<span class="team-item-value">';
+						
+						echo $meta[$id][0];
+						
+						echo '</span></div>';
+					}
 				}
 
 					/* translators: %s: Name of current post */
