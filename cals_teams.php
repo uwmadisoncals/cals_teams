@@ -64,9 +64,9 @@ function create_cals_teams_post_type() {
       'taxonomies'=>array('cals_groups'),
       'supports' => array(
         'title',
-        'editor',
+        //'editor',
         'excerpt',
-        'revisions',
+        //'revisions',
         'thumbnail',
         'author',
         'page-attributes',
