@@ -200,10 +200,31 @@ function calsteams_mbox_save($post_id){
 
       $input_id = $field['id'];//get the current item's input id property
 
+      $input_type = $field['type'];//get field type
+
       // Checks for input and sanitizes/saves if needed
       if( isset( $_POST[ $input_id ] ) ) {
 
-        update_post_meta( $post_id, $input_id, sanitize_text_field( $_POST[ $input_id ] ) );
+        //validate email
+        if($input_id === 'calsteams_email' ){
+          if(!is_email($_POST[ $input_id ])){
+            $_POST[ $input_id ] = 'invalid email';
+          } 
+        }
+
+        switch ($input_type){
+          case 'text':
+            update_post_meta( $post_id, $input_id, sanitize_text_field( $_POST[ $input_id ] ) );
+            break;
+          case 'wysiwyg':
+            update_post_meta( $post_id, $input_id, esc_textarea( $_POST[ $input_id ] ) );
+            break;
+          default:
+            update_post_meta( $post_id, $input_id, sanitize_text_field( $_POST[ $input_id ] ) );
+
+        }
+        //update_post_meta( $post_id, $input_id, sanitize_text_field( $_POST[ $input_id ] ) );
+
       }
   }
 }

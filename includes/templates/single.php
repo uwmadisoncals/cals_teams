@@ -16,7 +16,7 @@
 
 		$cals_teams_query = new WP_Query($args);//Instantiate New WP Query Object
 		logit($cals_teams_query,'$cals_teams_query');
-		logit($cals_teams_query->post->ID,'$cals_teams_query id: ');
+		//logit($cals_teams_query->post->ID,'$cals_teams_query id: ');
 
 		// Start the loop.
 		while ( have_posts() ) : the_post();
