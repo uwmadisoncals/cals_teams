@@ -62,6 +62,7 @@ function create_cals_teams_post_type() {
       'public' => true,
       'has_archive' => true,
       'taxonomies'=>array('cals_groups'),
+      'rewrite'=>array('slug'=>'team','with_front'=>true),
       'supports' => array(
         'title',
         //'editor',
@@ -89,7 +90,7 @@ function create_cals_teams_taxonomies(){
         ),
       'public'=>'true',
       'hierarchical'=>'true',
-      'rewrite'=>array('slug'=>'group','hierarchical'=>true),
+      'rewrite'=>array('slug'=>'teams/group','with_front'=>true,'hierarchical'=>true),
       'show_ui'=>'true',
       'show_in_admin_bar'=>'true',
       'show_in_nav_menus'=>'true'
@@ -317,7 +318,7 @@ function ct_get_template_hierarchy( $template ) {
     if($template === 'taxonomy'){
       // Get the template slug
       $template_slug = rtrim( $template, '.php' );//taxonomy
-      $template = $template_slug . '-cals_groups.php'; //taxonomy-cals_groups.php
+      $template = $template_slug . '.php'; //taxonomy.php
 
       logit($template,'$tax_template: ');
       //logit($template_slug,'$template_slug: ');

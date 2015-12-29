@@ -23,7 +23,7 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 		<?php
 		 	//Uncomment this to debug template origin
-			echo 'This template is from plugin. archive-team.php';
+			echo 'This template is from plugin. taxonomy-cals_groups.php';
 
 			include( WP_PLUGIN_DIR . '/cals_teams/includes/data/cals_teams_fields.php' ); //include Metabox and Metabox field group data
 
