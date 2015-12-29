@@ -241,6 +241,10 @@ function template_chooser($template){
   if(is_single()){
     return ct_get_template_hierarchy('single');
   }
+
+  if(is_archive()){
+    return ct_get_template_hierarchy('archive');
+  }
 }
 add_filter('template_include','template_chooser');
 
@@ -253,29 +257,60 @@ add_filter('template_include','template_chooser');
  
 function ct_get_template_hierarchy( $template ) {
  
-    // Get the template slug
-    $template_slug = rtrim( $template, '.php' );//single
-    $template = $template_slug . '.php'; //single.php
+    if($template === 'single'){
+      // Get the template slug
+      $template_slug = rtrim( $template, '.php' );//single
+      $template = $template_slug . '-team.php'; //single-team.php
 
-    //logit($template,'$template: ');
-    //logit($template_slug,'$template_slug: ');
+      //logit($template,'$template: ');
+      //logit($template_slug,'$template_slug: ');
 
-    //$locate = locate_template( array( 'plugin_templates/single.php' ) );
-    //$locateString = 'plugin_template/' . $template;
-    //logit($locateString,'$locateString: ');
-    //logit($locate,'$locate: ');
- 
-    // Check if a custom template exists in the theme folder, if not, load the plugin template file
-    if ( $theme_file = locate_template( array( 'cals_teams_templates/' . $template ) ) ) {
-        $file = $theme_file;
-        //logit($file,'$file: ');
+      //$locate = locate_template( array( 'plugin_templates/single.php' ) );
+      //$locateString = 'plugin_template/' . $template;
+      //logit($locateString,'$locateString: ');
+      //logit($locate,'$locate: ');
+   
+      // Check if a custom template exists in the theme folder, if not, load the plugin template file
+      if ( $theme_file = locate_template( array( 'cals_teams_templates/' . $template ) ) ) {
+          $file = $theme_file;
+          //logit($file,'$file: ');
+
+      }
+      else {
+          $file = CT_PLUGIN_BASE_DIR . '/includes/templates/' . $template;
+      }
+   
+      //return apply_filters( 'rc_repl_template_' . $template, $file );
+      return $file;
 
     }
-    else {
-        $file = CT_PLUGIN_BASE_DIR . '/includes/templates/' . $template;
+
+    if($template === 'archive'){
+      // Get the template slug
+      $template_slug = rtrim( $template, '.php' );//archive
+      $template = $template_slug . '-team.php'; //archive.php
+
+      //logit($template,'$template: ');
+      //logit($template_slug,'$template_slug: ');
+
+      //$locate = locate_template( array( 'plugin_templates/single.php' ) );
+      //$locateString = 'plugin_template/' . $template;
+      //logit($locateString,'$locateString: ');
+      //logit($locate,'$locate: ');
+   
+      // Check if a custom template exists in the theme folder, if not, load the plugin template file
+      if ( $theme_file = locate_template( array( 'cals_teams_templates/' . $template ) ) ) {
+          $file = $theme_file;
+          //logit($file,'$file: ');
+
+      }
+      else {
+          $file = CT_PLUGIN_BASE_DIR . '/includes/templates/' . $template;
+           //logit($file,'$file: ');
+      }
+   
+      //return apply_filters( 'rc_repl_template_' . $template, $file );
+      return $file;
     }
- 
-    //return apply_filters( 'rc_repl_template_' . $template, $file );
-    return $file;
 }
 add_filter( 'template_include', 'template_chooser' );

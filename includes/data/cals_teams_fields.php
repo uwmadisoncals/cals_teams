@@ -11,7 +11,7 @@ $prefix = 'calsteams_';
 ///////////// TEXT Fields //////////////////////////////
 
 $field_office_location = array(
-  'name'=>'Offie Location',
+  'name'=>'Office Location',
   'desc'=>'',
   'id'=>$prefix . 'office_location', //corresponds to input field name & id
   'type'=>'text',
@@ -47,7 +47,7 @@ $field_fax = array(
   'desc'=>'',
   'id'=>$prefix . 'fax', //corresponds to input field name & id
   'type'=>'text',
-  'std'=>'2',//default value
+  'std'=>'',//default value
   );
 
 $field_email = array(
