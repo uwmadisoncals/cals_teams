@@ -76,7 +76,7 @@ function create_cals_teams_post_type() {
       )
     );
 }
-add_action( 'init', 'create_cals_teams_post_type' );
+add_action( 'init', 'create_cals_teams_post_type',0 );
 
 
 function create_cals_teams_taxonomies(){
@@ -90,7 +90,7 @@ function create_cals_teams_taxonomies(){
         ),
       'public'=>'true',
       'hierarchical'=>'true',
-      'rewrite'=>array('slug'=>'teams/group','with_front'=>true,'hierarchical'=>true),
+      'rewrite'=>array('slug'=>'group','with_front'=>true,'hierarchical'=>true),
       'show_ui'=>'true',
       'show_in_admin_bar'=>'true',
       'show_in_nav_menus'=>'true'
@@ -101,7 +101,7 @@ function create_cals_teams_taxonomies(){
   register_taxonomy_for_object_type( 'cals_groups', 'team' );
 
 }
-add_action( 'init', 'create_cals_teams_taxonomies');
+add_action( 'init', 'create_cals_teams_taxonomies',10);
 
 
 
