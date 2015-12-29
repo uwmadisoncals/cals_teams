@@ -88,7 +88,8 @@ function create_cals_teams_taxonomies(){
         'singular-name'=>__('Group','cals_teams'),
         ),
       'public'=>'true',
-      'heirarchical'=>'true',
+      'hierarchical'=>'true',
+      'rewrite'=>array('slug'=>'team','hierarchical'=>'true'),
       'show_ui'=>'true',
       'show_in_admin_bar'=>'true',
       'show_in_nav_menus'=>'true'
