@@ -89,7 +89,7 @@ function create_cals_teams_taxonomies(){
         ),
       'public'=>'true',
       'hierarchical'=>'true',
-      'rewrite'=>array('slug'=>'team','hierarchical'=>'true'),
+      'rewrite'=>array('slug'=>'group','hierarchical'=>true),
       'show_ui'=>'true',
       'show_in_admin_bar'=>'true',
       'show_in_nav_menus'=>'true'
@@ -292,6 +292,34 @@ function ct_get_template_hierarchy( $template ) {
       $template = $template_slug . '-team.php'; //archive.php
 
       //logit($template,'$template: ');
+      //logit($template_slug,'$template_slug: ');
+
+      //$locate = locate_template( array( 'plugin_templates/single.php' ) );
+      //$locateString = 'plugin_template/' . $template;
+      //logit($locateString,'$locateString: ');
+      //logit($locate,'$locate: ');
+   
+      // Check if a custom template exists in the theme folder, if not, load the plugin template file
+      if ( $theme_file = locate_template( array( 'cals_teams_templates/' . $template ) ) ) {
+          $file = $theme_file;
+          //logit($file,'$file: ');
+
+      }
+      else {
+          $file = CT_PLUGIN_BASE_DIR . '/includes/templates/' . $template;
+           //logit($file,'$file: ');
+      }
+   
+      //return apply_filters( 'rc_repl_template_' . $template, $file );
+      return $file;
+    }
+
+    if($template === 'taxonomy'){
+      // Get the template slug
+      $template_slug = rtrim( $template, '.php' );//taxonomy
+      $template = $template_slug . '-cals_groups.php'; //taxonomy-cals_groups.php
+
+      logit($template,'$tax_template: ');
       //logit($template_slug,'$template_slug: ');
 
       //$locate = locate_template( array( 'plugin_templates/single.php' ) );
