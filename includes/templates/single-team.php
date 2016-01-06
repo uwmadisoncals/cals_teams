@@ -9,7 +9,7 @@
 
 		
 		$mbox_fields = $mbox['fields'];//Meta data for field groups
-		//logit($mbox_fields,'$mbox_fields');
+		logit($mbox_fields,'$mbox_fields');
 
 
 		$args = array('post_type'=>'team');//WP Query Args
@@ -66,7 +66,9 @@
 				foreach ($mbox_fields as $key => $value) {
 					$id = $value['id'];
 					if(array_key_exists($id,$meta)){
-						echo '<div class="team-item"><span class="team-item-label">';
+						if($meta[$id][0]){
+
+						echo '<div class="team-item"><span class="team-item-label" style="font-weight:bold;">';
 						echo $value['name'] . ': ';
 						echo '</span>';
 
@@ -75,6 +77,8 @@
 						echo $meta[$id][0];
 						
 						echo '</span></div>';
+
+						}
 					}
 				}
 
