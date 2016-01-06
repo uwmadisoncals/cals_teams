@@ -22,7 +22,7 @@
 		while ( have_posts() ) : the_post();
 
 		//Uncomment this to debug template origin
-		echo 'THIS IS TEMPLATE FROM Plugin';
+		//echo 'THIS IS TEMPLATE FROM Plugin';
 
 		$plugin_template_obj = new Cals_Teams; //Instantiate Cals_Teams object
 

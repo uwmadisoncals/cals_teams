@@ -39,8 +39,9 @@ get_header(); ?>
 				// Post thumbnail.
 
 				if(has_post_thumbnail()){
-
-					the_post_thumbnail('full');
+					echo '<div class="image-wrapper" style="padding-top:10px;">';
+					the_post_thumbnail('full',array('class'=>'aligncenter'));
+					echo '</div>';
 				}
 			?>
 
@@ -56,10 +57,13 @@ get_header(); ?>
 
 			<div class="entry-content">
 				<?php
+
 				foreach ($mbox_fields as $key => $value) {
 					$id = $value['id'];
 					if(array_key_exists($id,$meta)){
-						echo '<div class="team-item"><span class="team-item-label">';
+						if($meta[$id][0]){
+
+						echo '<div class="team-item" style="margin-bottom:20px;"><span class="team-item-label" style="font-weight:bold;">';
 						echo $value['name'] . ': ';
 						echo '</span>';
 
@@ -68,6 +72,8 @@ get_header(); ?>
 						echo $meta[$id][0];
 						
 						echo '</span></div>';
+
+						}
 					}
 				}
 
