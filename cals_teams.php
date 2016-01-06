@@ -120,7 +120,7 @@ function calsteams_buildform_cb($post){
 
   global $mbox, $post;//bring in these variables from global scope
 
-  logit($mbox,'$mbox');
+  //logit($mbox,'$mbox');
 
   $mbox_data = get_post_custom($post->ID); //get array containing metabox custom fields
 
@@ -134,7 +134,7 @@ function calsteams_buildform_cb($post){
 
     $meta = get_post_meta($post->ID,$field['id'],true); //get meta-box data for current field
 
-    logit($meta,'$meta: ');
+    //logit($meta,'$meta: ');
 
     echo '<tr>',
                 '<th style="width:20%"><label for="', $field['id'], '">', $field['name'], '</label></th>',
@@ -320,7 +320,7 @@ function ct_get_template_hierarchy( $template ) {
       $template_slug = rtrim( $template, '.php' );//taxonomy
       $template = $template_slug . '.php'; //taxonomy.php
 
-      logit($template,'$tax_template: ');
+      //logit($template,'$tax_template: ');
       //logit($template_slug,'$template_slug: ');
 
       //$locate = locate_template( array( 'plugin_templates/single.php' ) );

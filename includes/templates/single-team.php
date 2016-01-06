@@ -9,13 +9,13 @@
 
 		
 		$mbox_fields = $mbox['fields'];//Meta data for field groups
-		logit($mbox_fields,'$mbox_fields');
+		//logit($mbox_fields,'$mbox_fields');
 
 
 		$args = array('post_type'=>'team');//WP Query Args
 
 		$cals_teams_query = new WP_Query($args);//Instantiate New WP Query Object
-		logit($cals_teams_query,'$cals_teams_query');
+		//logit($cals_teams_query,'$cals_teams_query');
 		//logit($cals_teams_query->post->ID,'$cals_teams_query id: ');
 
 		// Start the loop.
@@ -29,7 +29,7 @@
 
 		$meta = $plugin_template_obj->calsteams_get_post_meta(); // Filter out unwanted elements from get_post_custom
 
-		logit($meta,'$meta: ');
+		//logit($meta,'$meta: ');
 
 		//logit($cals_teams_query, '$cals_teams_query');
 
@@ -45,8 +45,9 @@
 				//$thumb = $meta['_thumbnail_id'][0];//14
 
 				if(has_post_thumbnail()){
-
-					the_post_thumbnail('full');
+					echo '<div class="image-wrapper" style="padding-top:10px;">';
+					the_post_thumbnail('full',array('class'=>'aligncenter'));
+					echo '</div>';
 				}
 			?>
 
@@ -68,7 +69,7 @@
 					if(array_key_exists($id,$meta)){
 						if($meta[$id][0]){
 
-						echo '<div class="team-item"><span class="team-item-label" style="font-weight:bold;">';
+						echo '<div class="team-item" style="margin-bottom:20px;"><span class="team-item-label" style="font-weight:bold;">';
 						echo $value['name'] . ': ';
 						echo '</span>';
 
