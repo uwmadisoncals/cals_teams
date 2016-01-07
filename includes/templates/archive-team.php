@@ -29,13 +29,13 @@ get_header(); ?>
 
 		
 		$mbox_fields = $mbox['fields'];//Meta data for field groups
-		//logit($mbox_fields,'$mbox_fields');
+		logit($mbox_fields,'$mbox_fields');
 
 
 		$args = array('post_type'=>'team');//WP Query Args
 
 		$cals_teams_query = new WP_Query($args);//Instantiate New WP Query Object
-		//logit($cals_teams_query,'$cals_teams_query');
+		logit($cals_teams_query,'$cals_teams_query');
 		//logit($cals_teams_query->post->ID,'$cals_teams_query id: ');
 
 		 ?>
@@ -53,12 +53,41 @@ get_header(); ?>
 			// Start the Loop.
 			while ( have_posts() ) : the_post();
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'content', get_post_format() );
+			$id = get_the_id();
+
+			logit($id,'$id: ');
+			logit(get_post_meta($id),'gpmid: ');
+
+				$name_prefix = get_post_meta($id, 'calsteams_name_prefix')[0];
+				$first_name = get_post_meta($id, 'calsteams_first_name')[0];
+				$last_name = get_post_meta($id, 'calsteams_last_name')[0];
+				$pro_title = get_post_meta($id, 'calsteams_professional_title')[0];
+
+			?>
+
+				<div>
+					<a href="<?php esc_url(the_permalink()) ?>"><?php echo $name_prefix . ' ' . $first_name . ' ' . $last_name;  ?></a>
+
+					<div><?php 
+					foreach ($mbox_fields as $key => $value) {
+						$field_id = $value['id'];//field id name
+						$allowed_fields = array('calsteams_professional_title');
+
+						if(get_post_meta($id,$field_id)[0] && in_array($field_id,$allowed_fields) ){
+
+							echo $value['name'] . ': ' . get_post_meta($id,$field_id)[0] . '<br>';
+							//echo $value['name'] . '<br>';
+							
+						}
+						
+						
+					}
+
+					 ?></div>
+
+				</div>
+
+				<?php
 
 			// End the loop.
 			endwhile;

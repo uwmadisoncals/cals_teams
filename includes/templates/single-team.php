@@ -45,7 +45,7 @@
 				//$thumb = $meta['_thumbnail_id'][0];//14
 
 				if(has_post_thumbnail()){
-					echo '<div class="image-wrapper" style="padding-top:10px;">';
+					echo '<div class="image-wrapper" style="padding-top:20px;">';
 					the_post_thumbnail('full',array('class'=>'aligncenter'));
 					echo '</div>';
 				}
@@ -107,13 +107,10 @@
 				endif;
 			?>
 
-			<footer class="entry-footer">
-				<?php if(function_exists('twentyfifteen_entry_meta')){
-				twentyfifteen_entry_meta();
-				}?>
+			<div class="entry-footer">
 
 				<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
-			</footer><!-- .entry-footer -->
+			</div><!-- .entry-footer -->
 
 		</article><!-- #post-## -->
 		<?php 
