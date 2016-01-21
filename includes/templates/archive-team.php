@@ -29,13 +29,13 @@ get_header(); ?>
 
 		
 		$mbox_fields = $mbox['fields'];//Meta data for field groups
-		logit($mbox_fields,'$mbox_fields');
+		//logit($mbox_fields,'$mbox_fields');
 
 
 		$args = array('post_type'=>'team');//WP Query Args
 
 		$cals_teams_query = new WP_Query($args);//Instantiate New WP Query Object
-		logit($cals_teams_query,'$cals_teams_query');
+		//logit($cals_teams_query,'$cals_teams_query');
 		//logit($cals_teams_query->post->ID,'$cals_teams_query id: ');
 
 		 ?>
@@ -55,8 +55,8 @@ get_header(); ?>
 
 			$id = get_the_id();
 
-			logit($id,'$id: ');
-			logit(get_post_meta($id),'gpmid: ');
+			//logit($id,'$id: ');
+			//logit(get_post_meta($id),'gpmid: ');
 
 				$name_prefix = get_post_meta($id, 'calsteams_name_prefix')[0];
 				$first_name = get_post_meta($id, 'calsteams_first_name')[0];
