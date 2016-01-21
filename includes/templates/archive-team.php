@@ -57,6 +57,9 @@ get_header(); ?>
 
 			//logit($id,'$id: ');
 			//logit(get_post_meta($id),'gpmid: ');
+			
+				$all_meta = get_post_meta($id);
+				//logit($all_meta,'$all_meta: ');
 
 				$name_prefix = get_post_meta($id, 'calsteams_name_prefix')[0];
 				$first_name = get_post_meta($id, 'calsteams_first_name')[0];
@@ -69,6 +72,10 @@ get_header(); ?>
 					<a href="<?php esc_url(the_permalink()) ?>"><?php echo $name_prefix . ' ' . $first_name . ' ' . $last_name;  ?></a>
 
 					<div><?php 
+
+
+
+					//using foreach
 					foreach ($mbox_fields as $key => $value) {
 						$field_id = $value['id'];//field id name
 						$allowed_fields = array('calsteams_professional_title');

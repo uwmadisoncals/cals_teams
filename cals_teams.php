@@ -37,6 +37,7 @@ Class Cals_Teams{
     }
 
     protected function register_callbacks(){
+        //create new filter hook with callback as instance method
         add_filter( 'theme_calsteams_get_post_meta', array( $this, 'calsteams_get_post_meta' ) );
         //add_action( 'theme_bar', array( $this, 'bar' ) );
     }

@@ -19,8 +19,10 @@ get_header(); ?>
 		//echo 'THIS IS TEMPLATE FROM THEME';
 
 		$myObj = new Cals_Teams;
-		$meta = apply_filters( 'theme_calsteams_get_post_meta', FALSE );
 
+		//invoke the callback functions of the filter hook
+		$meta = apply_filters( 'theme_calsteams_get_post_meta', FALSE );
+		logit($meta,'$meta: ');
 		$mbox_fields = $mbox['fields'];
 		//logit($mbox_fields,'$mbox_fields');
 
