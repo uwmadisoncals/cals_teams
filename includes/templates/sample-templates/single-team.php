@@ -22,7 +22,9 @@ get_header(); ?>
 
 		//invoke the callback functions of the filter hook
 		$meta = apply_filters( 'theme_calsteams_get_post_meta', FALSE );
-		logit($meta,'$meta: ');
+		//$preg = preg_grep("^calsteams",$meta);
+		//logit($meta,'$meta: ');
+		//logit($preg,'$preg: ');
 		$mbox_fields = $mbox['fields'];
 		//logit($mbox_fields,'$mbox_fields');
 
