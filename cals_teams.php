@@ -32,8 +32,17 @@ if(!defined('CT_PLUGIN_URL')){
 
 Class Cals_Teams{
 
+  
     public function __construct(){
+        //global $mbox;
         $this->register_callbacks();
+        $this->init_properties();
+        //$this->color = 'red';
+        //$this->fields = $mbox['fields'];
+
+/*        foreach ($mbox['fields'] as $key => $value) {
+          $this->$key = $value;
+        }*/
     }
 
     protected function register_callbacks(){
@@ -42,14 +51,24 @@ Class Cals_Teams{
         //add_action( 'theme_bar', array( $this, 'bar' ) );
     }
 
-    public function calsteams_get_post_meta(){
-      $meta = get_post_custom(get_the_ID());
-      return $meta;
+    protected function init_properties(){
+        global $mbox;
+        $mboxfields = $mbox['fields'];
+
+        $this->field_name_prefix_value = get_post_meta(get_the_ID(),'calsteams_name_prefix')[0];
+
+        $this->color = 'red';
     }
 
-/*    public function bar(){
-        return 'bar';
-    }*/
+    public function calsteams_get_post_meta(){
+
+      $meta = get_post_custom(get_the_ID());
+      //$meta_keys = array_keys($pre_meta);
+      //$pattern= "#^calsteams#";
+      //$calsteams_keys = preg_grep($pattern,$meta_keys);
+      return $meta;
+      //return $calsteams_keys;
+    }
 }
 
 function create_cals_teams_post_type() {

@@ -29,7 +29,7 @@ get_header(); ?>
 
 		
 		$mbox_fields = $mbox['fields'];//Meta data for field groups
-		//logit($mbox_fields,'$mbox_fields');
+		logit($mbox_fields,'$mbox_fields');
 
 
 		$args = array('post_type'=>'team');//WP Query Args
@@ -78,9 +78,10 @@ get_header(); ?>
 					//using foreach
 					foreach ($mbox_fields as $key => $value) {
 						$field_id = $value['id'];//field id name
-						$allowed_fields = array('calsteams_professional_title');
-
-						if(get_post_meta($id,$field_id)[0] && in_array($field_id,$allowed_fields) ){
+						//$allowed_fields = array('calsteams_professional_title');
+						$shalom = get_post_meta($id,$field_id);
+						logit($shalom,'$shalom: ');
+						if(!empty(get_post_meta($id,$field_id)[0]) ){
 
 							echo $value['name'] . ': ' . get_post_meta($id,$field_id)[0] . '<br>';
 							//echo $value['name'] . '<br>';
