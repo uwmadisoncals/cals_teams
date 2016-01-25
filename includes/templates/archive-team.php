@@ -20,7 +20,7 @@
 get_header(); ?>
 
 	<section id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+		<main id="main" class="site-main cals_teams archive_team" role="main">
 		<?php
 		 	//Uncomment this to debug template origin
 			echo 'This template is from plugin. archive-team.php';
@@ -42,7 +42,7 @@ get_header(); ?>
 
 		<?php if ( have_posts() ) : ?>
 
-			<header class="page-header">
+			<header>
 				<?php
 					the_archive_title( '<h1 class="page-title">', '</h1>' );
 					the_archive_description( '<div class="taxonomy-description">', '</div>' );
@@ -68,20 +68,37 @@ get_header(); ?>
 
 			?>
 
-				<div>
-					<a href="<?php esc_url(the_permalink()) ?>"><?php echo $name_prefix . ' ' . $first_name . ' ' . $last_name;  ?></a>
+				<div class="member-wrapper">
 
-					<div><?php 
+					<div class="member-heading-wrapper">
+						<a class ="member" href="<?php esc_url(the_permalink()) ?>"><?php echo $name_prefix . ' ' . $first_name . ' ' . $last_name;  ?></a>
+						<span class="protitle"><?php echo $pro_title; ?></span>
+					</div>
+
+					<div class="member-body">
+					<?php 
+						if(has_post_thumbnail()) : ?>
+
+							<div class="member-image-wrapper" style="padding-top:20px;">
+							<?php the_post_thumbnail('thumbnail',array('class'=>'member-thumbnail')); ?>
+							</div>
+
+						<?php else : ?>
+
+							<div class="member-image-wrapper" style="padding-top:20px;">
+							<img class="member-thumbnail" alt="person placeholder image" src="<?php echo plugins_url() . '/cals_teams/includes/images/calsteams_placeholder.png'  ?>" width="150" height="150" />
+							</div>
+							
+						<?php endif;
 
 
 
 					//using foreach
 					foreach ($mbox_fields as $key => $value) {
 						$field_id = $value['id'];//field id name
-						//$allowed_fields = array('calsteams_professional_title');
-						$shalom = get_post_meta($id,$field_id);
-						logit($shalom,'$shalom: ');
-						if(!empty(get_post_meta($id,$field_id)[0]) ){
+						$allowed_fields = array('calsteams_office_location','calsteams_phone','calsteams_email');
+
+						if(!empty(get_post_meta($id,$field_id)[0]) && in_array($field_id,$allowed_fields) ){
 
 							echo $value['name'] . ': ' . get_post_meta($id,$field_id)[0] . '<br>';
 							//echo $value['name'] . '<br>';
@@ -91,9 +108,9 @@ get_header(); ?>
 						
 					}
 
-					 ?></div>
+					?></div><!--END .member-body -->
 
-				</div>
+				</div><!-- END .member-wrapper  -->
 
 				<?php
 

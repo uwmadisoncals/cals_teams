@@ -364,3 +364,10 @@ function ct_get_template_hierarchy( $template ) {
     }
 }
 add_filter( 'template_include', 'template_chooser' );
+
+//Register and Enqueue Plugin Stylesheet
+function calsteams_add_stylesheet(){
+  wp_register_style( 'cals_teams_style', plugins_url('cals_teams/cals_teams_style.css') );
+  wp_enqueue_style( 'cals_teams_style' );
+}
+add_action('wp_enqueue_scripts','calsteams_add_stylesheet');

@@ -77,7 +77,7 @@ $field_name_prefix = array(
   'desc'=>'This is where the room is.',
   'id'=>$prefix . 'name_prefix', //corresponds to input field name & id
   'type'=>'select',
-  'options'=>array('Mr.','Mrs.','Ms.','Dr.')
+  'options'=>array('','Mr.','Mrs.','Ms.','Dr.')
   );
 
 
@@ -167,10 +167,10 @@ $mbox = array(
                   $field_first_name,
                   $field_last_name,
                   $field_professional_title,
+                  $field_office_location,
                   $field_phone,
                   $field_fax,
                   $field_email,
-                  $field_office_location,
                   $field_wsyiwyg_description,
                   $field_wsyiwyg_specialty,
                   $field_wsyiwyg_education,
