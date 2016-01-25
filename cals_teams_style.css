@@ -1,19 +1,19 @@
 
 /* Archive Team Main */
 main.cals_teams.archive_team{
-	/*background-color:salmon;*/
+	/*padding:0 5%;*/
 }
 
 /* Archive Team Header  */
 main.cals_teams.archive_team header{
-/*	background-color: salmon;*/
+	
 }
-
-
 
 /* Member Wrapper */
 main.cals_teams.archive_team .member-wrapper{
-
+width: 50%;
+background-color: lightBlue;
+float:left;
 }
 
 /* Member Heading Wrapper*/
