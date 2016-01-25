@@ -80,19 +80,23 @@ get_header(); ?>
 						if(has_post_thumbnail()) : ?>
 
 							<div class="member-image-wrapper" style="padding-top:20px;">
-							<?php the_post_thumbnail('thumbnail',array('class'=>'member-thumbnail')); ?>
+								<a href="<?php esc_url(the_permalink()) ?>">
+									<?php the_post_thumbnail('thumbnail',array('class'=>'member-thumbnail')); ?>
+								</a>
 							</div>
 
 						<?php else : ?>
 
 							<div class="member-image-wrapper" style="padding-top:20px;">
-							<img class="member-thumbnail" alt="person placeholder image" src="<?php echo plugins_url() . '/cals_teams/includes/images/calsteams_placeholder.png'  ?>" width="150" height="150" />
+								<a href="<?php esc_url(the_permalink()) ?>">
+									<img class="member-thumbnail" alt="person placeholder image" src="<?php echo plugins_url() . '/cals_teams/includes/images/calsteams_placeholder.png'  ?>" width="150" height="150" />
+								</a>
 							</div>
 							
-						<?php endif;
+						<?php endif; ?>
 
-
-
+						<div class="member-data-wrapper">
+						<?php
 					//using foreach
 					foreach ($mbox_fields as $key => $value) {
 						$field_id = $value['id'];//field id name
@@ -100,15 +104,23 @@ get_header(); ?>
 
 						if(!empty(get_post_meta($id,$field_id)[0]) && in_array($field_id,$allowed_fields) ){
 
-							echo $value['name'] . ': ' . get_post_meta($id,$field_id)[0] . '<br>';
-							//echo $value['name'] . '<br>';
+							?>
+							<div class="member-data-field <?php echo $field_id; ?>">
+								<span class="field-label"><?php echo $value['name']; ?>:</span>
+								<span class="field-data"><?php echo get_post_meta($id,$field_id)[0]; ?></span>
+							</div>
+
+							<?php
 							
 						}
 						
 						
-					}
+					}// END foreach
+					?>
 
-					?></div><!--END .member-body -->
+					</div><!-- END .member-data-wrapper -->
+
+					</div><!--END .member-body -->
 
 				</div><!-- END .member-wrapper  -->
 
