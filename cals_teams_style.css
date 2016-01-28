@@ -149,10 +149,6 @@ content:'\e800';
 font-family:fontello;
 font-weight:normal;
 font-style:normal;
-margin:0;
-text-decoration: none;
-color:inherit;
-padding-left:6px;
 }
 
 /* Phone Font-Icon */
@@ -161,10 +157,6 @@ content:'\e801';
 font-family:fontello;
 font-weight:normal;
 font-style:normal;
-margin:0;
-text-decoration: none;
-color:inherit;
-padding-left:6px;
 }
 
 /* Email Font-Icon */
@@ -173,10 +165,6 @@ content:'\e802';
 font-family:fontello;
 font-weight:normal;
 font-style:normal;
-margin:0;
-text-decoration: none;
-color:inherit;
-padding-left:6px;
 }
 
 /* Field Data */
