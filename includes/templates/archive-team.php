@@ -49,6 +49,7 @@ get_header(); ?>
 				?>
 			</header><!-- .page-header -->
 
+			<div class="member-grouping">
 			<?php
 			// Start the Loop.
 			while ( have_posts() ) : the_post();
@@ -71,7 +72,7 @@ get_header(); ?>
 				<div class="member-wrapper">
 
 					<div class="member-heading-wrapper">
-						<a class ="member" href="<?php esc_url(the_permalink()) ?>"><?php echo $name_prefix . ' ' . $first_name . ' ' . $last_name;  ?></a>
+						<a class ="member" href="<?php esc_url(the_permalink()) ?>"><?php echo $name_prefix . ' ' . $first_name . ' ' . $last_name;  ?></a><br/>
 						<span class="protitle"><?php echo $pro_title; ?></span>
 					</div>
 
@@ -106,7 +107,7 @@ get_header(); ?>
 
 							?>
 							<div class="member-data-field <?php echo $field_id; ?>">
-								<span class="field-label"><?php echo $value['name']; ?>:</span>
+								<span class="field-label"></span>
 								<span class="field-data"><?php echo get_post_meta($id,$field_id)[0]; ?></span>
 							</div>
 
@@ -127,7 +128,10 @@ get_header(); ?>
 				<?php
 
 			// End the loop.
-			endwhile;
+			endwhile; ?>
+			</div><!-- END .member-grouping -->
+
+			<?php
 
 			// Previous/next page navigation.
 			the_posts_pagination( array(
