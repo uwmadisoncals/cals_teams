@@ -27,7 +27,7 @@ get_header(); ?>
 
 			include( WP_PLUGIN_DIR . '/cals_teams/includes/data/cals_teams_fields.php' ); //include Metabox and Metabox field group data
 
-		
+
 		$mbox_fields = $mbox['fields'];//Meta data for field groups
 		logit($mbox_fields,'$mbox_fields');
 
@@ -58,7 +58,7 @@ get_header(); ?>
 
 			//logit($id,'$id: ');
 			//logit(get_post_meta($id),'gpmid: ');
-			
+
 				$all_meta = get_post_meta($id);
 				//logit($all_meta,'$all_meta: ');
 
@@ -67,6 +67,9 @@ get_header(); ?>
 				$last_name = get_post_meta($id, 'calsteams_last_name')[0];
 				$pro_title = get_post_meta($id, 'calsteams_professional_title')[0];
 
+				$checkBox = get_post_meta($id, 'calsteams_checkbox')[0];
+				logit($checkBox,'$checkBox: ');
+				logit($all_meta,'$all_meta: ');
 			?>
 
 				<div class="member-wrapper">
@@ -77,23 +80,28 @@ get_header(); ?>
 					</div>
 
 					<div class="member-body">
-					<?php 
+					<?php
 						if(has_post_thumbnail()) : ?>
 
 							<div class="member-image-wrapper" style="padding-top:20px;">
 								<a href="<?php esc_url(the_permalink()) ?>">
-									<?php the_post_thumbnail('thumbnail',array('class'=>'member-thumbnail')); ?>
+									<?php if($checkBox === 'on'){
+										the_post_thumbnail('thumbnail',array('class'=>'member-thumbnail round'));
+									}else{
+										the_post_thumbnail('thumbnail',array('class'=>'member-thumbnail'));
+									}
+									?>
 								</a>
 							</div>
 
 						<?php else : ?>
 
-							<div class="member-image-wrapper" style="padding-top:20px;">
+							<div class="member-image-wrapper <?php// if(){} ?>" style="padding-top:20px;">
 								<a href="<?php esc_url(the_permalink()) ?>">
 									<img class="member-thumbnail" alt="person placeholder image" src="<?php echo plugins_url() . '/cals_teams/includes/images/calsteams_placeholder.png'  ?>" width="150" height="150" />
 								</a>
 							</div>
-							
+
 						<?php endif; ?>
 
 						<div class="member-data-wrapper">
@@ -112,10 +120,10 @@ get_header(); ?>
 							</div>
 
 							<?php
-							
+
 						}
-						
-						
+
+
 					}// END foreach
 					?>
 
