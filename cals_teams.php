@@ -365,8 +365,8 @@ add_filter( 'template_include', 'template_chooser' );
 
 //Register and Enqueue Plugin Stylesheet
 function calsteams_add_stylesheets(){
-  wp_register_style( 'cals_teams_style', plugins_url('cals_teams/cals_teams_style.css') );
   wp_register_style('bricklayer_style', plugins_url('cals_teams/bricklayer.min.css'));
+  wp_register_style( 'cals_teams_style', plugins_url('cals_teams/cals_teams_style.css') );
   wp_enqueue_style( 'cals_teams_style' );
   wp_enqueue_style( 'bricklayer_style' );
 }
