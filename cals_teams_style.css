@@ -172,4 +172,38 @@ white-space: nowrap;
   margin-top:0px;
 }
 
+/************************
+  --- single-team.php ---
+*************************/
+
+/* article */
+body.single-team article.team{
+  background-color: thistle;
+  display:flex;
+  flex-direction: column;
+  padding:2em;
+  width:auto;
+}
+
+/* .image-wrapper */
+body.single-team article.team .image-wrapper{
+  background-color: lemonChiffon;
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+}
+
+body.single-team article.team .image-wrapper img{
+margin:0;
+}
+
+
+/* .entry-content */
+body.single-team article.team .entry-content{
+  display:flex;
+  flex-direction:column;
+}
+
+
 

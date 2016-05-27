@@ -28,6 +28,7 @@ get_header(); ?>
 		
 		$mbox_fields = $mbox['fields'];//Meta data for field groups
 		//logit($mbox_fields,'$mbox_fields');
+		
 
 		$args = array('post_type'=>'team');//WP Query Args
 

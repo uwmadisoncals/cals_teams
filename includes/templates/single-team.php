@@ -10,6 +10,7 @@
 		
 		$mbox_fields = $mbox['fields'];//Meta data for field groups
 		//logit($mbox_fields,'$mbox_fields');
+		//logit($mbox,'$mbox: ');
 
 
 		$args = array('post_type'=>'team');//WP Query Args
@@ -20,9 +21,6 @@
 
 		// Start the loop.
 		while ( have_posts() ) : the_post();
-
-		//Uncomment this to debug template origin
-		//echo 'THIS IS TEMPLATE FROM Plugin';
 
 		$plugin_template_obj = new Cals_Teams; //Instantiate Cals_Teams object
 
@@ -37,19 +35,6 @@
 			?>
 			
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<?php
-				// Post thumbnail.
-
-				//$post_thumbnail_id = get_post_thumbnail_id();//14
-
-				//$thumb = $meta['_thumbnail_id'][0];//14
-
-				if(has_post_thumbnail()){
-					echo '<div class="image-wrapper" style="padding-top:20px;">';
-					the_post_thumbnail('full',array('class'=>'aligncenter'));
-					echo '</div>';
-				}
-			?>
 
 			<header class="entry-header">
 				<?php
@@ -63,6 +48,13 @@
 
 			<div class="entry-content">
 				<?php
+					if(has_post_thumbnail()){
+					echo '<div class="image-wrapper";">';
+					the_post_thumbnail('full',array('class'=>'aligncenter'));
+					echo '</div>';
+				}
+
+
 
 				foreach ($mbox_fields as $key => $value) {
 					$id = $value['id'];

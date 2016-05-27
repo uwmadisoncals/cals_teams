@@ -402,22 +402,34 @@ function get_current_template( $echo = false ) {
     else
         return $GLOBALS['current_theme_template'];
 }
+
 //add css class '.cals_team-archive-team' to <body> if current template is from cals_teams plugin
 function ct_body_classes( $classes ) {
 
     $template_dir = get_current_template();
 
-    $stripped_val = strpos($template_dir, 'cals_teams/includes/templates/archive-team.php');
+    $archive_team_str = strpos($template_dir, 'cals_teams/includes/templates/archive-team.php');
 
-    if($stripped_val !== false){
+    $single_team_str = strpos($template_dir, 'cals_teams/includes/templates/single-team.php');
+
+    //if current template is archive-team from plugin add class to body
+    if($archive_team_str !== false){
 
       $fileName = rtrim(basename($template_dir),'.php');
 
       $classes[] = 'cals_team-' . $fileName;
       return $classes;
 
-    }
-    else{
+    //if current template is single-team from plugin add class to body
+    }else if( $single_team_str !== false){
+
+      $fileName = rtrim(basename($template_dir),'.php');
+
+      $classes[] = 'cals_team-' . $fileName;
+      return $classes;
+
+    //default case
+    }else{
     //$classes[] = 'class-name';
     return $classes;
     }
