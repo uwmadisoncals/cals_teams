@@ -23,11 +23,17 @@
 		while ( have_posts() ) : the_post();
 
 		$plugin_template_obj = new Cals_Teams; //Instantiate Cals_Teams object
-
+		logit($plugin_template_obj,'$plugin_template_obj: ');
 
 		$meta = $plugin_template_obj->calsteams_get_post_meta(); // Filter out unwanted elements from get_post_custom
 
-		//logit($meta,'$meta: ');
+		logit($meta,'$get_post_meta: ');
+
+		$myctfields = new CTFields($mbox);
+		logit($myctfields, '$myctfields: ');
+
+/*		$myctfields = new CTFields;
+		logit($myctfields,'$myctfields: ');*/
 
 		//logit($cals_teams_query, '$cals_teams_query');
 

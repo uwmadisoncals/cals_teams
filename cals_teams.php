@@ -52,12 +52,16 @@ Class Cals_Teams{
     }
 
     protected function init_properties(){
-        global $mbox;
+       /*global $mbox;
         $mboxfields = $mbox['fields'];
+
+        $this->mboxfields = $mbox['fields'];*/
 
         $this->field_name_prefix_value = get_post_meta(get_the_ID(),'calsteams_name_prefix')[0];
 
         $this->color = 'red';
+
+        $this->fields = new CTFields();
     }
 
     public function calsteams_get_post_meta(){
@@ -69,6 +73,30 @@ Class Cals_Teams{
       return $meta;
       //return $calsteams_keys;
     }
+}
+
+Class CTFields{
+
+  public function __construct($metaBoxArgs){
+    $this->init_properties($metaBoxArgs);
+
+  }
+
+  protected function init_properties($metaBoxArgs){
+    
+    if( is_array($metaBoxArgs) ){
+
+      $this->id = isset($metaBoxArgs['id']) ? $metaBoxArgs['id'] : NULL;
+      $this->title = isset($metaBoxArgs['title']) ? $metaBoxArgs['title'] : NULL;
+      $this->screen = isset($metaBoxArgs['screen']) ? $metaBoxArgs['screen'] : NULL;
+      $this->context = isset($metaBoxArgs['context']) ? $metaBoxArgs['context'] : NULL;
+      $this->priority = isset($metaBoxArgs['priority']) ? $metaBoxArgs['priority'] : NULL;
+
+      //$this->fields = isset($metaBoxArgs['fields']) ? $this->init_fields( $metaBoxArgs['fields'] ) : NULL;
+    }
+
+  }
+
 }
 
 function create_cals_teams_post_type() {
