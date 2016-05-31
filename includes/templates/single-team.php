@@ -28,12 +28,13 @@
 		$meta = $plugin_template_obj->calsteams_get_post_meta(); // Filter out unwanted elements from get_post_custom
 
 		logit($meta,'$get_post_meta: ');
+		$myctfields = new CTFields($mbox_fields);
 
-		$myctfields = new CTFields($mbox);
+		$myctmetabox = new CTMetaBox($mbox);
+
+		logit($myctmetabox, '$myctfields: ');
 		logit($myctfields, '$myctfields: ');
 
-/*		$myctfields = new CTFields;
-		logit($myctfields,'$myctfields: ');*/
 
 		//logit($cals_teams_query, '$cals_teams_query');
 

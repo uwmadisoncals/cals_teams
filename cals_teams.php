@@ -61,7 +61,7 @@ Class Cals_Teams{
 
         $this->color = 'red';
 
-        $this->fields = new CTFields();
+        $this->fields = new CTMetaBox();
     }
 
     public function calsteams_get_post_meta(){
@@ -75,7 +75,7 @@ Class Cals_Teams{
     }
 }
 
-Class CTFields{
+Class CTMetaBox{
 
   public function __construct($metaBoxArgs){
     $this->init_properties($metaBoxArgs);
@@ -92,12 +92,55 @@ Class CTFields{
       $this->context = isset($metaBoxArgs['context']) ? $metaBoxArgs['context'] : NULL;
       $this->priority = isset($metaBoxArgs['priority']) ? $metaBoxArgs['priority'] : NULL;
 
+      //$this->fields = new CTFields($metaBoxArgs['fields']);
+
       //$this->fields = isset($metaBoxArgs['fields']) ? $this->init_fields( $metaBoxArgs['fields'] ) : NULL;
+      
+/*      if( isset($metaBoxArgs['fields']) ){
+        
+        $fields = $metaBoxArgs['fields'];
+
+      }
+
+      foreach( $fields as $key => $value){
+
+        $this->fields->$value['id'] = $value;     
+      }*/
+
+
+
     }
+
+  }//END init_properties()
+
+} //END CTMetaBox
+
+Class CTFields{
+
+  public function __construct($fields){
+
+
+   foreach( $fields as $key => $value){
+     
+    $this->key = $key;
+
+
+     foreach($fields as $k => $v ){
+
+      }
+
+     }
+
+     
+     //return $fields;
 
   }
 
 }
+
+
+
+
 
 function create_cals_teams_post_type() {
 
