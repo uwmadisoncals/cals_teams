@@ -30,6 +30,13 @@ if(!defined('CT_PLUGIN_URL')){
   define('CT_PLUGIN_URL', plugin_dir_url(__FILE__));
 }
 
+/**
+ * Summary.
+ *
+ * Description.
+ *
+ * @since 0.1.0
+ */
 Class Cals_Teams{
 
   
@@ -75,6 +82,13 @@ Class Cals_Teams{
     }
 }
 
+/**
+ * Summary.
+ *
+ * Description.
+ *
+ * @since 0.1.0
+ */
 Class CTMetaBox{
 
   public function __construct($metaBoxArgs){
@@ -92,47 +106,55 @@ Class CTMetaBox{
       $this->context = isset($metaBoxArgs['context']) ? $metaBoxArgs['context'] : NULL;
       $this->priority = isset($metaBoxArgs['priority']) ? $metaBoxArgs['priority'] : NULL;
 
-      //$this->fields = new CTFields($metaBoxArgs['fields']);
-
-      //$this->fields = isset($metaBoxArgs['fields']) ? $this->init_fields( $metaBoxArgs['fields'] ) : NULL;
-      
-/*      if( isset($metaBoxArgs['fields']) ){
-        
-        $fields = $metaBoxArgs['fields'];
-
-      }
-
-      foreach( $fields as $key => $value){
-
-        $this->fields->$value['id'] = $value;     
-      }*/
-
-
-
+      $this->fields = new CTFields($metaBoxArgs['fields']);
     }
 
-  }//END init_properties()
+  }
 
-} //END CTMetaBox
+}
 
+/**
+ * Summary.
+ *
+ * Description.
+ *
+ * @since 0.1.0
+ */
 Class CTFields{
 
   public function __construct($fields){
 
+    $this->arrayToObject($fields);
 
-   foreach( $fields as $key => $value){
-     
-    $this->key = $key;
+  }
+
+  public function arrayToObject($fields){
+
+    foreach( $fields as $key=>$value){//CTFields depth: 1 (outer)
+
+      $this->$value['id'] = (object)$value;//property name is 'id'; cast array value to object
+
+      if(is_array($value)){
+
+        foreach($value as $k=>$v){//CTFields depth:2
+
+          if(is_array($v)){
+
+            $this->$value['id']->$k = (object)$v ;//property name is $k, cast $v to object
+
+          }
 
 
-     foreach($fields as $k => $v ){
+          foreach( $v as $_k => $_v ){//CTFields depth:3
 
+            if(is_array($_v)){
+              $this->$value['id']->$k->$_k = (object)$_v ;//cast $_v to object
+
+            }
+          }
+        }  
       }
-
-     }
-
-     
-     //return $fields;
+    }
 
   }
 

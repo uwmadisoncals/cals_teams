@@ -32,8 +32,11 @@
 
 		$myctmetabox = new CTMetaBox($mbox);
 
-		logit($myctmetabox, '$myctfields: ');
+		logit($myctmetabox, '$myctmetabox: ');
 		logit($myctfields, '$myctfields: ');
+
+		//$prfx = $myctmetabox->fields->calsteams_name_prefix->name;
+		//logit($prfx,'$prfx');
 
 
 		//logit($cals_teams_query, '$cals_teams_query');
