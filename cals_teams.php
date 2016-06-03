@@ -40,10 +40,10 @@ if(!defined('CT_PLUGIN_URL')){
 Class Cals_Teams{
 
   
-    public function __construct(){
+    public function __construct($metaBoxArgs){
         //global $mbox;
         $this->register_callbacks();
-        $this->init_properties();
+        $this->init_properties($metaBoxArgs);
         //$this->color = 'red';
         //$this->fields = $mbox['fields'];
 
@@ -58,17 +58,19 @@ Class Cals_Teams{
         //add_action( 'theme_bar', array( $this, 'bar' ) );
     }
 
-    protected function init_properties(){
+    protected function init_properties($metaBoxArgs){
        /*global $mbox;
         $mboxfields = $mbox['fields'];
 
         $this->mboxfields = $mbox['fields'];*/
 
-        $this->field_name_prefix_value = get_post_meta(get_the_ID(),'calsteams_name_prefix')[0];
+        //$this->field_name_prefix_value = get_post_meta(get_the_ID(),'calsteams_name_prefix')[0];
 
-        $this->color = 'red';
+        //$this->color = 'red';
 
-        $this->fields = new CTMetaBox();
+        $this->meta_box = new CTMetaBox($metaBoxArgs);
+
+        $this->data = $this->calsteams_get_post_meta();
     }
 
     public function calsteams_get_post_meta(){
@@ -77,9 +79,44 @@ Class Cals_Teams{
       //$meta_keys = array_keys($pre_meta);
       //$pattern= "#^calsteams#";
       //$calsteams_keys = preg_grep($pattern,$meta_keys);
-      return $meta;
-      //return $calsteams_keys;
+      logit($meta, '$meta: ');
+      
+      $myObject = new stdClass();
+
+      foreach ($meta as $key => $value){
+
+        $myObject->$key = (object)$value;
+
+
+        //logit($key,'$key: ');
+        //logit($value,'$value: ');
+        
+        foreach($value as $k => $v){
+          $valType = gettype($v);
+          //logit($k,'$k: ');
+          //logit($v, '$v: ');
+          //logit($valType,'$valType: ');
+
+          $myObject->$key = $v;
+
+
+        }
+
+
+
+      }
+      //logit($meta,'$meta: ');
+      logit($myObject,'$myObject: ');
+      //$this->data = $myObject;
+
+
+      //return $meta;
+
+      return $myObject;
+
     }
+
+
 }
 
 /**
@@ -137,6 +174,7 @@ Class CTFields{
       if(is_array($value)){
 
         foreach($value as $k=>$v){//CTFields depth:2
+
 
           if(is_array($v)){
 
@@ -528,3 +566,4 @@ function ct_body_classes( $classes ) {
     }
 }
 add_filter( 'body_class','ct_body_classes' );
+

@@ -9,7 +9,7 @@
 
 		
 		$mbox_fields = $mbox['fields'];//Meta data for field groups
-		//logit($mbox_fields,'$mbox_fields');
+		logit($mbox_fields,'$mbox_fields');
 		//logit($mbox,'$mbox: ');
 
 
@@ -22,18 +22,21 @@
 		// Start the loop.
 		while ( have_posts() ) : the_post();
 
-		$plugin_template_obj = new Cals_Teams; //Instantiate Cals_Teams object
+		$plugin_template_obj = new Cals_Teams($mbox); //Instantiate Cals_Teams object
 		logit($plugin_template_obj,'$plugin_template_obj: ');
+
+/*		$radio = $plugin_template_obj->meta_box->fields->calsteams_radio;
+		logit($radio,'$radio: ');*/
 
 		$meta = $plugin_template_obj->calsteams_get_post_meta(); // Filter out unwanted elements from get_post_custom
 
-		logit($meta,'$get_post_meta: ');
-		$myctfields = new CTFields($mbox_fields);
+		//logit($meta,'$get_post_meta: ');
+		//$myctfields = new CTFields($mbox_fields);
 
-		$myctmetabox = new CTMetaBox($mbox);
+		//$myctmetabox = new CTMetaBox($mbox);
 
-		logit($myctmetabox, '$myctmetabox: ');
-		logit($myctfields, '$myctfields: ');
+		//logit($myctmetabox, '$myctmetabox: ');
+		//logit($myctfields, '$myctfields: ');
 
 		//$prfx = $myctmetabox->fields->calsteams_name_prefix->name;
 		//logit($prfx,'$prfx');
@@ -58,6 +61,8 @@
 
 			<div class="entry-content">
 				<?php
+					echo '<div class="upper-container">';
+
 					if(has_post_thumbnail()){
 					echo '<div class="image-wrapper";">';
 					the_post_thumbnail('full',array('class'=>'aligncenter'));
@@ -65,25 +70,70 @@
 				}
 
 
+					echo '<div class="short-vals-container">';
 
-				foreach ($mbox_fields as $key => $value) {
-					$id = $value['id'];
-					if(array_key_exists($id,$meta)){
-						if($meta[$id][0]){
+					foreach($plugin_template_obj->data as $_key_ => $_value_){
 
-						echo '<div class="team-item" style="margin-bottom:20px;"><span class="team-item-label" style="font-weight:bold;">';
-						echo $value['name'] . ': ';
-						echo '</span>';
+							if(!empty($_value_)){
 
-						echo '<span class="team-item-value">';
-						
-						echo $meta[$id][0];
-						
-						echo '</span></div>';
+								$id = $_key_ ;
+								$the_fields = $plugin_template_obj->meta_box->fields;
 
-						}
+								if( property_exists($plugin_template_obj->meta_box->fields, $id) ){
+
+										if( $the_fields->$id->type == 'text' || $the_fields->$id->type == 'select' ){
+
+										echo '<div class="team-item" style="margin-bottom:20px;"><span class="team-item-label" style="font-weight:bold;">';
+
+										echo $plugin_template_obj->meta_box->fields->$id->name . ': ';
+
+										echo '</span>';
+
+										echo '<span class="team-item-value">';
+
+										echo $_value_;
+
+										echo '</span></div>';
+
+									}
+									
+								}
+							}
 					}
-				}
+					echo '</div></div>';
+
+					foreach($plugin_template_obj->data as $_key_ => $_value_){
+
+							if(!empty($_value_)){
+
+								$id = $_key_ ;
+								$the_fields = $plugin_template_obj->meta_box->fields;
+
+								if( property_exists($plugin_template_obj->meta_box->fields, $id) ){
+
+										if( !($the_fields->$id->type == 'text' || $the_fields->$id->type == 'select')  ){
+
+										echo '<div class="team-item" style="margin-bottom:20px;"><span class="team-item-label" style="font-weight:bold;">';
+
+										echo $plugin_template_obj->meta_box->fields->$id->name . ': ';
+
+										echo '</span>';
+
+										echo '<span class="team-item-value">';
+
+										echo $_value_;
+
+										echo '</span></div>';
+
+									}
+									
+								}
+							}
+					}
+
+
+
+
 
 					/* translators: %s: Name of current post */
 /*					the_content( sprintf(
