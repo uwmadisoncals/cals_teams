@@ -67,6 +67,15 @@
 					echo '<div class="image-wrapper";">';
 					the_post_thumbnail('full',array('class'=>'aligncenter'));
 					echo '</div>';
+				}else{
+
+					echo '<div class="image-wrapper";">';
+					the_post_thumbnail('full',array('class'=>'aligncenter')); ?>
+
+					<img class="member-thumbnail" alt="person placeholder image" src="<?php echo plugins_url() . '/cals_teams/includes/images/calsteams_placeholder.png'  ?>" width="150" height="150" />
+					
+					<?php
+					echo '</div>';
 				}
 
 

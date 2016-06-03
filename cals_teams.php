@@ -76,9 +76,6 @@ Class Cals_Teams{
     public function calsteams_get_post_meta(){
 
       $meta = get_post_custom(get_the_ID());
-      //$meta_keys = array_keys($pre_meta);
-      //$pattern= "#^calsteams#";
-      //$calsteams_keys = preg_grep($pattern,$meta_keys);
       logit($meta, '$meta: ');
       
       $myObject = new stdClass();
@@ -86,7 +83,6 @@ Class Cals_Teams{
       foreach ($meta as $key => $value){
 
         $myObject->$key = (object)$value;
-
 
         //logit($key,'$key: ');
         //logit($value,'$value: ');
@@ -98,25 +94,13 @@ Class Cals_Teams{
           //logit($valType,'$valType: ');
 
           $myObject->$key = $v;
-
-
         }
-
-
-
       }
-      //logit($meta,'$meta: ');
+
       logit($myObject,'$myObject: ');
-      //$this->data = $myObject;
-
-
-      //return $meta;
 
       return $myObject;
-
     }
-
-
 }
 
 /**
