@@ -22,7 +22,7 @@
 		// Start the loop.
 		while ( have_posts() ) : the_post();
 
-		$plugin_template_obj = new Cals_Teams($mbox); //Instantiate Cals_Teams object
+		$plugin_template_obj = new Cals_Teams(); //Instantiate Cals_Teams object
 		logit($plugin_template_obj,'$plugin_template_obj: ');
 
 /*		$radio = $plugin_template_obj->meta_box->fields->calsteams_radio;

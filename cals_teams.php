@@ -38,10 +38,14 @@ if(!defined('CT_PLUGIN_URL')){
  * @since 0.1.0
  */
 Class Cals_Teams{
-
   
-    public function __construct($metaBoxArgs){
-        //global $mbox;
+    public function __construct(array $metaBoxArgs = null ){
+        global $mbox;
+    
+        if(is_null($metaBoxArgs)){
+          $metaBoxArgs = $mbox;
+        }
+        
         $this->register_callbacks();
         $this->init_properties($metaBoxArgs);
         //$this->color = 'red';

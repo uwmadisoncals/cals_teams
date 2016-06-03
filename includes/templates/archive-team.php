@@ -35,6 +35,9 @@ get_header(); ?>
 		$cals_teams_query = new WP_Query($args);//Instantiate New WP Query Object
 		//logit($cals_teams_query,'$cals_teams_query');
 		//logit($cals_teams_query->post->ID,'$cals_teams_query id: ');
+		
+		$cals_teams_obj = new Cals_Teams($mbox); //Instantiate Cals_Teams object
+		logit($cals_teams_obj,'$cals_teams_obj: ');
 
 		 ?>
 
