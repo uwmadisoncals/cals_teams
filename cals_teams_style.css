@@ -86,8 +86,7 @@ overflow: hidden;
 
 /*padding:0 12px 12px 12px;*/
 padding:20px;
-/*margin-top:10px;
-*/
+margin-top:10px;
 max-width:280px;
 }
 
@@ -226,10 +225,5 @@ body.single-team article.team .upper-container .short-vals-container{
 order:0;
 }
 
-div.blank{
-background-color: SandyBrown;
-width:100%;
-height:100px;
 
-}
 
