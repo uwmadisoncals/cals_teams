@@ -80,7 +80,7 @@ Class Cals_Teams{
     public function calsteams_get_post_meta(){
 
       $meta = get_post_custom(get_the_ID());
-      logit($meta, '$meta: ');
+      //logit($meta, '$meta: ');
       
       $myObject = new stdClass();
 
@@ -249,6 +249,7 @@ add_action( 'init', 'create_cals_teams_taxonomies',10);
 function add_meta_boxes_team($post){
 
   global $mbox;
+  logit($mbox,'$mbox: ');
 
   add_meta_box($mbox['id'],$mbox['title'], 'calsteams_buildform_cb',$mbox['screen'],$mbox['context']);
 }
@@ -263,13 +264,17 @@ function calsteams_buildform_cb($post){
 
   $mbox_data = get_post_custom($post->ID); //get array containing metabox custom fields
 
-  //logit($mbox_data,'$mbox_data: ');
+  logit($mbox_data,'$mbox_data: ');
 
   wp_nonce_field( 'calsteams_update_field', 'calsteams_nonce');
 
   echo '<table class="form-table">';
 
   foreach ($mbox['fields'] as $field) {
+
+    logit($field['id'],'$field_id: ');
+    logit($field,'$field: ');
+
 
     $meta = get_post_meta($post->ID,$field['id'],true); //get meta-box data for current field
 
@@ -326,7 +331,7 @@ function calsteams_buildform_cb($post){
 function calsteams_mbox_save($post_id){
   // Checks save status
   global $mbox;
-
+  
   $is_autosave = wp_is_post_autosave( $post_id );
   $is_revision = wp_is_post_revision( $post_id );
   $is_valid_nonce = ( isset( $_POST['calsteams_nonce'] ) ) && wp_verify_nonce($_POST['calsteams_nonce'],'calsteams_update_field') ? 'true' : 'false';
@@ -338,6 +343,8 @@ function calsteams_mbox_save($post_id){
 
   //Real foreach, temporarily commented out
   foreach ($mbox['fields'] as $field) {
+
+
 
       $input_id = $field['id'];//get the current item's input id property
 
@@ -360,12 +367,21 @@ function calsteams_mbox_save($post_id){
           case 'wysiwyg':
             update_post_meta( $post_id, $input_id, esc_textarea( $_POST[ $input_id ] ) );
             break;
+
           default:
             update_post_meta( $post_id, $input_id, sanitize_text_field( $_POST[ $input_id ] ) );
 
         }
-        //update_post_meta( $post_id, $input_id, sanitize_text_field( $_POST[ $input_id ] ) );
 
+      
+
+      }else{
+        //save post data for checkbox
+        if(!isset($_POST['calsteams_checkbox'])){
+          update_post_meta( $post_id, 'calsteams_checkbox', '');
+        }else{
+          update_post_meta( $post_id, 'calsteams_checkbox', sanitize_text_field( $_POST[ $input_id ] ) );
+        }
       }
   }
 }
