@@ -86,7 +86,9 @@ overflow: hidden;
 
 /*padding:0 12px 12px 12px;*/
 padding:20px;
-margin-top:10px;
+/*margin-top:10px;
+*/
+max-width:280px;
 }
 
 /* Member Heading Wrapper*/
@@ -101,7 +103,7 @@ main.cals_teams.archive_team a.member{
 
 /* Member Professional Title */
 main.cals_teams.archive_team span.protitle{
-
+font-size:18px;
 }
 
 
@@ -113,7 +115,7 @@ main.cals_teams.archive_team .member-body{
 
 /* Member Image Wrapper */
 main.cals_teams.archive_team .member-image-wrapper{
-
+/*max-width:260px;*/
 }
 
 /*Member Thumbnail */
@@ -165,6 +167,7 @@ font-style:normal;
 /* Field Data */
 main.cals_teams.archive_team span.field-data{
 white-space: nowrap;
+font-size:16px;
 }
 
 .bricklayer-column div.member-wrapper:first-of-type{
@@ -172,6 +175,9 @@ white-space: nowrap;
   margin-top:0px;
 }
 
+.member-grouping .bricklayer .bricklayer-column-sizer{
+  width:100px;
+}
 /************************
   --- single-team.php ---
 *************************/
@@ -220,5 +226,10 @@ body.single-team article.team .upper-container .short-vals-container{
 order:0;
 }
 
+div.blank{
+background-color: SandyBrown;
+width:100%;
+height:100px;
 
+}
 

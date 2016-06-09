@@ -83,7 +83,7 @@ get_header(); ?>
 
 							<div class="member-image-wrapper" style="padding-top:20px;">
 								<a href="<?php esc_url(the_permalink()) ?>">
-									<?php the_post_thumbnail('thumbnail',array('class'=>'member-thumbnail')); ?>
+									<?php the_post_thumbnail('medium',array('class'=>'member-thumbnail')); ?>
 								</a>
 							</div>
 
