@@ -9,7 +9,7 @@
 
 		
 		$mbox_fields = $mbox['fields'];//Meta data for field groups
-		logit($mbox_fields,'$mbox_fields');
+		//logit($mbox_fields,'$mbox_fields');
 		//logit($mbox,'$mbox: ');
 
 
@@ -23,10 +23,10 @@
 		while ( have_posts() ) : the_post();
 
 		$plugin_template_obj = new Cals_Teams(); //Instantiate Cals_Teams object
-		logit($plugin_template_obj,'$plugin_template_obj: ');
+		//logit($plugin_template_obj,'$plugin_template_obj: ');
 
 /*		$radio = $plugin_template_obj->meta_box->fields->calsteams_radio;
-		logit($radio,'$radio: ');*/
+		//logit($radio,'$radio: ');*/
 
 		$meta = $plugin_template_obj->calsteams_get_post_meta(); // Filter out unwanted elements from get_post_custom
 

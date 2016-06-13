@@ -37,7 +37,7 @@ get_header(); ?>
 		//logit($cals_teams_query->post->ID,'$cals_teams_query id: ');
 		
 		$cals_teams_obj = new Cals_Teams($mbox); //Instantiate Cals_Teams object
-		logit($cals_teams_obj,'$cals_teams_obj: ');
+		//logit($cals_teams_obj,'$cals_teams_obj: ');
 
 		 ?>
 
@@ -69,7 +69,7 @@ get_header(); ?>
 				$last_name = get_post_meta($id, 'calsteams_last_name')[0];
 				$pro_title = get_post_meta($id, 'calsteams_professional_title')[0];
 				$image_url = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
-				logit($image_url);
+				//logit($image_url);
 
 			?>
 				<div class="member_wrapper">

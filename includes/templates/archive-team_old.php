@@ -37,7 +37,7 @@ get_header(); ?>
 		//logit($cals_teams_query->post->ID,'$cals_teams_query id: ');
 		
 		$cals_teams_obj = new Cals_Teams($mbox); //Instantiate Cals_Teams object
-		logit($cals_teams_obj,'$cals_teams_obj: ');
+		//logit($cals_teams_obj,'$cals_teams_obj: ');
 
 		 ?>
 

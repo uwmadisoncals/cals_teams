@@ -101,7 +101,7 @@ Class Cals_Teams{
         }
       }
 
-      logit($myObject,'$myObject: ');
+      //logit($myObject,'$myObject: ');
 
       return $myObject;
     }
@@ -249,7 +249,7 @@ add_action( 'init', 'create_cals_teams_taxonomies',10);
 function add_meta_boxes_team($post){
 
   global $mbox;
-  logit($mbox,'$mbox: ');
+  //logit($mbox,'$mbox: ');
 
   add_meta_box($mbox['id'],$mbox['title'], 'calsteams_buildform_cb',$mbox['screen'],$mbox['context']);
 }
@@ -264,7 +264,7 @@ function calsteams_buildform_cb($post){
 
   $mbox_data = get_post_custom($post->ID); //get array containing metabox custom fields
 
-  logit($mbox_data,'$mbox_data: ');
+  //logit($mbox_data,'$mbox_data: ');
 
   wp_nonce_field( 'calsteams_update_field', 'calsteams_nonce');
 
@@ -272,8 +272,8 @@ function calsteams_buildform_cb($post){
 
   foreach ($mbox['fields'] as $field) {
 
-    logit($field['id'],'$field_id: ');
-    logit($field,'$field: ');
+    //logit($field['id'],'$field_id: ');
+    //logit($field,'$field: ');
 
 
     $meta = get_post_meta($post->ID,$field['id'],true); //get meta-box data for current field
