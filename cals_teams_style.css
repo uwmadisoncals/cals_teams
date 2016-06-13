@@ -90,7 +90,7 @@ main.cals_teams.archive_team .member_info_wrapper .member-heading-wrapper{
 
 /* Member */
 main.cals_teams.archive_team .member-heading-wrapper a.member{
-
+font-size:18px;
 }
 
 /* Member Professional Title */
@@ -100,7 +100,7 @@ font-size:18px;
 
 /* Member Body */
 main.cals_teams.archive_team .member-body{
-
+margin-top:10px;
 }
 
 /* Member Image Wrapper */
@@ -242,7 +242,7 @@ max-width:280px;
 
 main.cals_teams.archive_team .member_wrapper .newImg{
 width:280px;
-height:200px;
+height:300px;
 box-sizing: border-box;
 width:auto;
 
