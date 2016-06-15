@@ -76,12 +76,15 @@ get_header(); ?>
 
 				<?php if($image_url){ ?>
 
+					<a href="<?php esc_url( the_permalink() ); ?>">
 					<div class="newImg" style="background: url(<?php echo $image_url ?>) no-repeat center center; background-size: cover;"></div>
+					</a>
 
 				<?php }else{ ?>
-
+					<a href="<?php esc_url( the_permalink() ); ?>">
 					<div class="newImg" style="background: url('<?php echo plugins_url() . '/cals_teams/includes/images/calsteams_placeholder.png' ?>') no-repeat center center; background-size: cover;"></div>
-
+					</a>
+					
 				<?php } ?>
 
 				
