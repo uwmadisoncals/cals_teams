@@ -575,3 +575,11 @@ add_filter( 'body_class','ct_body_classes' );
 add_filter('get_the_archive_title', function ($title) {
     return preg_replace('/^\w+: /', '', $title);
 });
+
+function ct_settings_page(){
+
+add_submenu_page( 'edit.php?post_type=team', 'Team Members Settings', 'Settings', 'manage_options', basename(__FILE__), array(&$this, 'options_page'));
+
+}
+
+add_action('admin_menu', 'ct_settings_page');
