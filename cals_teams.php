@@ -575,11 +575,46 @@ add_filter( 'body_class','ct_body_classes' );
 add_filter('get_the_archive_title', function ($title) {
     return preg_replace('/^\w+: /', '', $title);
 });
+/**
+ * Setup cals_teams Settings Submenu
+ */
+function ct_settings_submenu(){
 
-function ct_settings_page(){
-
-add_submenu_page( 'edit.php?post_type=team', 'Team Members Settings', 'Settings', 'manage_options', basename(__FILE__), array(&$this, 'options_page'));
-
+add_submenu_page( 'edit.php?post_type=team', 'Team Members Settings', 'Settings', 'manage_options', 'cals_teams.php', 'ct_settings_cb');
 }
 
-add_action('admin_menu', 'ct_settings_page');
+add_action('admin_menu', 'ct_settings_submenu');
+
+//Display callback for the settings page.
+function ct_settings_cb() { 
+  //fetch markup from ct_settings.php
+  include( plugin_dir_path(__FILE__) .'includes/ct_settings.php' );
+}
+
+//Executed upon plugin activation
+function ct_settings_activate(){
+  ct_settings_options_init();
+}
+//register plugin activation hook
+register_activation_hook( __FILE__, 'ct_settings_activate' );
+
+//create options into wp_options table
+function ct_settings_options_init(){
+
+  //display title on archive-team.php
+  add_option('ct_setting_archiveteam_title', '');
+}
+
+//update option to wp_options table
+function ct_settings_options_update($archiveteam_title = "Lab Members"){
+
+  //update archive-team.php title
+  update_option('ct_setting_archiveteam_title', $archiveteam_title);
+}
+
+//get option into wp_options table
+function ct_settings_options_get(){
+    return get_option('ct_setting_archiveteam_title');
+}
+
+
