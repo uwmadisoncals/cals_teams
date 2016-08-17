@@ -23,3 +23,16 @@ if($('body').is(".cals_team-single-team")){
 		});
 	}
 }
+
+//execute js on page archive-team.php
+if($('body').is(".post-type-archive-team")){
+	//$(".member_wrapper").wrapAll("<div class='new' />");
+	//
+	
+	$(".bricklayer-column").each( function(i){
+		
+		$(this).addClass('added');
+		$(this).children().wrapAll("<div class='new' />");
+
+	});
+}

@@ -186,10 +186,6 @@ Class CTFields{
 
 }
 
-
-
-
-
 function create_cals_teams_post_type() {
 
   register_post_type( 'team',
@@ -501,11 +497,24 @@ add_filter( 'template_include', 'template_chooser' );
 //Register and Enqueue Plugin Stylesheet
 function calsteams_add_stylesheets(){
   wp_register_style('bricklayer_style', plugins_url('cals_teams/bricklayer.min.css'));
+
   wp_register_style( 'cals_teams_style', plugins_url('cals_teams/cals_teams_style.css') );
+
   wp_enqueue_style( 'cals_teams_style' );
+
   wp_enqueue_style( 'bricklayer_style' );
+
 }
 add_action('wp_enqueue_scripts','calsteams_add_stylesheets');
+
+//
+function calsteams_add_stylesheets_admin(){
+
+  wp_register_style('cals_teams_admin_style', plugins_url('cals_teams/cals_teams_admin_style.css'));
+
+  wp_enqueue_style( 'cals_teams_admin_style' );
+}
+add_action('admin_enqueue_scripts','calsteams_add_stylesheets_admin');
 
 //Register and Enqueue Scripts
 function calsteams_add_scripts(){
@@ -616,5 +625,4 @@ function ct_settings_options_update($archiveteam_title = "Lab Members"){
 function ct_settings_options_get(){
     return get_option('ct_setting_archiveteam_title');
 }
-
 

@@ -227,8 +227,13 @@ background-color: #E5E5E5;
 overflow: hidden;
 /*width:300px;*/
 
-margin-top:10px;
+
 max-width:280px;
+
+margin:0 auto;
+margin-top:10px;
+
+
 }
 
 .bricklayer-column div.member_wrapper:first-of-type{
@@ -248,3 +253,4 @@ box-sizing: border-box;
 width:auto;
 
 }
+

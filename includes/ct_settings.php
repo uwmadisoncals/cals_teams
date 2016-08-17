@@ -2,10 +2,9 @@
  
   <div class="wrap">
         <h1>Team Members Settings</h1>
-        <p>Pomegranites</p>
-
         <form action="" method="post">
         	<h2>Team Page label</h2>
+            <p>This is the text that appears as the title on the <a href="<?php echo get_bloginfo('wpurl') . '/team'; ?>">page displaying all team members</a></p>
         	<input type="text" name="archive-team-title" value="<?php archive_team_title(); echo ct_settings_options_get(); ?>">
         	<input type="submit" value="Submit">
         </form>
