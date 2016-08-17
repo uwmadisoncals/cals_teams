@@ -24,15 +24,50 @@ if($('body').is(".cals_team-single-team")){
 	}
 }
 
-//execute js on page archive-team.php
-if($('body').is(".post-type-archive-team")){
-	//$(".member_wrapper").wrapAll("<div class='new' />");
-	//
-	
+function insertWrap(){
 	$(".bricklayer-column").each( function(i){
-		
+	
 		$(this).addClass('added');
 		$(this).children().wrapAll("<div class='new' />");
 
 	});
+}
+
+if($('body').is(".post-type-archive-team")){
+	//$(".member_wrapper").wrapAll("<div class='new' />");
+	
+	$(window).resize(function(){
+		var wWidth = $(window).width();
+		//console.log("resized! :" + wWidth );
+
+		if(wWidth >= 1200){
+
+			//insertWrap();
+
+			$(".site-content-inner").removeClass("orangie");
+			$(".site-content-inner").removeClass("greenie");
+
+
+		//}else if( wWidth <= 1199 && wWidth >= 980){
+		}else if( wWidth = 1199 ){
+			insertWrap();
+
+			//console.log("its less than 1199  AND greater than ");
+
+			$(".site-content-inner").removeClass("orangie");
+			$(".site-content-inner").addClass("greenie");
+
+		//}else if(wWidth <= 980 && wWidth >= 640){
+		}else if(wWidth = 980){
+			insertWrap();
+
+			$(".site-content-inner").removeClass("greenie");
+			$(".site-content-inner").addClass("orangie");
+
+		}else{
+			//insertWrap();
+			$(".site-content-inner").removeClass("orangie");
+		}
+	});
+
 }
