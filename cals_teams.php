@@ -584,6 +584,7 @@ add_filter( 'body_class','ct_body_classes' );
 add_filter('get_the_archive_title', function ($title) {
     return preg_replace('/^\w+: /', '', $title);
 });
+
 /**
  * Setup cals_teams Settings Submenu
  */
@@ -625,4 +626,3 @@ function ct_settings_options_update($archiveteam_title = "Lab Members"){
 function ct_settings_options_get(){
     return get_option('ct_setting_archiveteam_title');
 }
-

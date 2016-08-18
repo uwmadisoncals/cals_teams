@@ -212,6 +212,9 @@ order:0;
 
 /**************************************************** */
 
+body.post-type-archive-team #content{
+  margin-top:0;
+}
 
 /* Member Wrapper */
 main.cals_teams.archive_team .member_info_wrapper{
@@ -254,11 +257,21 @@ width:auto;
 
 }
 
-.greenie{
+/* Minimum width of 1199 pixels. */
+@media screen and ( max-width: 1199px ) {
 
-  background-color:green;
+  body.post-type-archive-team #content main#main h1.page-title{
+  margin-left:5%;
+
+  }
 }
 
-.orangie{
-  background-color:orange;
+/* Minimum width of 1199 pixels. */
+@media screen and ( max-width: 640px ) {
+
+    body.post-type-archive-team #content{
+      padding-top:0;
+
+    }
+
 }

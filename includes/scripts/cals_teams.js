@@ -28,7 +28,12 @@ function insertWrap(){
 	$(".bricklayer-column").each( function(i){
 	
 		$(this).addClass('added');
-		$(this).children().wrapAll("<div class='new' />");
+		//$(this).children().wrapAll("<div class='new' />");
+
+ 		if( $(this).find('.new').length = 0){
+
+ 			$(this).children().wrapAll("<div class='new' />");
+ 		}
 
 	});
 }
@@ -36,7 +41,7 @@ function insertWrap(){
 if($('body').is(".post-type-archive-team")){
 	//$(".member_wrapper").wrapAll("<div class='new' />");
 	
-	$(window).resize(function(){
+/*	$(window).resize(function(){
 		var wWidth = $(window).width();
 		//console.log("resized! :" + wWidth );
 
@@ -69,5 +74,5 @@ if($('body').is(".post-type-archive-team")){
 			$(".site-content-inner").removeClass("orangie");
 		}
 	});
-
+*/
 }
