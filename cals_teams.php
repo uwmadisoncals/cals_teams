@@ -277,6 +277,7 @@ function calsteams_buildform_cb($post){
     //logit($meta,'$meta: ');
 
     echo '<tr>',
+                '<th class="showCheckTh" ><input type="checkbox" name="" id="" ></th>',
                 '<th style="width:20%"><label for="', $field['id'], '">', $field['name'], '</label></th>',
                 '<td>';
 
@@ -626,3 +627,4 @@ function ct_settings_options_update($archiveteam_title = "Lab Members"){
 function ct_settings_options_get(){
     return get_option('ct_setting_archiveteam_title');
 }
+
