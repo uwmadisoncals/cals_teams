@@ -75,4 +75,5 @@ if($('body').is(".post-type-archive-team")){
 		}
 	});
 */
+
 }
