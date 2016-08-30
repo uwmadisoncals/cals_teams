@@ -260,7 +260,7 @@ function calsteams_buildform_cb($post){
 
   $mbox_data = get_post_custom($post->ID); //get array containing metabox custom fields
 
-  logit($mbox_data,'$mbox_data: ');
+  //logit($mbox_data,'$mbox_data: ');
 
   wp_nonce_field( 'calsteams_update_field', 'calsteams_nonce');
 
@@ -268,13 +268,13 @@ function calsteams_buildform_cb($post){
 
   foreach ($mbox['fields'] as $field) {
 
-    logit($field['id'],'$field_id: ');
-    logit($field,'$field: ');
+    //logit($field['id'],'$field_id: ');
+    //logit($field,'$field: ');
 
 
     $meta = get_post_meta($post->ID,$field['id'],true); //get meta-box data for current field
 
-    logit($meta,'$meta: ');
+    //logit($meta,'$meta: ');
 
     echo '<tr>',
                 '<th class="showCheckTh" ><input type="checkbox" name="" id="" ></th>',
@@ -514,12 +514,16 @@ function calsteams_add_stylesheets_admin(){
   wp_register_style('cals_teams_admin_style', plugins_url('cals_teams/cals_teams_admin_style.css'));
 
   wp_enqueue_style( 'cals_teams_admin_style' );
+}
+add_action('admin_enqueue_scripts','calsteams_add_stylesheets_admin');
 
-  wp_register_script('cals_teams_admin_script', plugins_url('cals_teams/scripts/admin_cals_teams.js') );
+function calsteams_add_script_admin(){
+
+  wp_register_script('cals_teams_admin_script', plugins_url('cals_teams/scripts/admin_cals_teams.js'),'',null);
 
   wp_enqueue_script('cals_teams_admin_script');
 }
-add_action('admin_enqueue_scripts','calsteams_add_stylesheets_admin');
+add_action('admin_enqueue_scripts','calsteams_add_script_admin');
 
 //Register and Enqueue Scripts
 function calsteams_add_scripts(){
