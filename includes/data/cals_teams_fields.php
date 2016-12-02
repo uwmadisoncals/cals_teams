@@ -1,4 +1,4 @@
-<?php 
+<?php
 ///FIELD DEFINITIONS
 
 //Variables
@@ -46,6 +46,14 @@ $field_email = array(
   'name'=>'Email',
   'desc'=>'',
   'id'=>$prefix . 'email', //corresponds to input field name & id
+  'type'=>'text',
+  'std'=>'',//default value
+  );
+
+$field_url = array(
+  'name'=>'Web Address URL',
+  'desc'=>'',
+  'id'=>$prefix . 'url', //corresponds to input field name & id
   'type'=>'text',
   'std'=>'',//default value
   );
@@ -170,6 +178,7 @@ $mbox = array(
                   $field_phone,
                   $field_fax,
                   $field_email,
+                  $field_url,
                   $field_wsyiwyg_description,
                   $field_wsyiwyg_specialty,
                   $field_wsyiwyg_education,
