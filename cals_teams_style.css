@@ -1,20 +1,22 @@
 @font-face {
   font-family: 'fontello';
-  src: url('includes/fonts/fontello.eot?94785859');
-  src: url('includes/fonts/fontello.eot?94785859#iefix') format('embedded-opentype'),
-       url('includes/fonts/fontello.woff?94785859') format('woff'),
-       url('includes/fonts/fontello.ttf?94785859') format('truetype'),
-       url('includes/fonts/fontello.svg?94785859#fontello') format('svg');
+  src: url('includes/fonts/fontello.eot?23476395');
+  src: url('includes/fonts/fontello.eot?23476395#iefix') format('embedded-opentype'),
+       url('includes/fonts/fontello.woff2?23476395') format('woff2'),
+       url('includes/fonts/fontello.woff?23476395') format('woff'),
+       url('includes/fonts/fontello.ttf?23476395') format('truetype'),
+       url('includes/fonts/fontello.svg?23476395#fontello') format('svg');
   font-weight: normal;
   font-style: normal;
 }
+
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
 /* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
 /*
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello';
-    src: url('../font/fontello.svg?94785859#fontello') format('svg');
+    src: url('../font/fontello.svg?93069942#fontello') format('svg');
   }
 }
 */
@@ -54,9 +56,11 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
-.icon-commerical-building:before { content: '\e800'; } /* '' */
 .icon-phone:before { content: '\e801'; } /* '' */
-.icon-mail-alt:before { content: '\e802'; } /* '' */
+.icon-globe:before { content: '\e803'; } /* '' */
+.icon-mail:before { content: '\e805'; } /* '' */
+.icon-building:before { content: '\f0f7'; } /* '' */
+.icon-user:before { content: '\e804'; } /* '' */
 
 /* Archive Team Main */
 main.cals_teams.archive_team{
@@ -100,11 +104,6 @@ main.cals_teams.archive_team span.protitle{
 font-size:18px;
 }
 
-/* Member Body */
-main.cals_teams.archive_team .member-body{
-margin-top:20px;
-}
-
 /* Member Image Wrapper */
 main.cals_teams.archive_team .member-image-wrapper{
 /*max-width:260px;*/
@@ -122,48 +121,52 @@ white-space: nowrap;
 }
 
 /* Member Data Field */
-main.cals_teams.archive_team .member-data-field{
-
+main.cals_teams.archive_team .member-data-field span.field-label{
+  font-family:fontello;
+  font-weight:normal;
+  font-style:normal;
+  white-space:nowrap;
+  display:inline-block;
+  width:20px;
+  font-size:15px;
 }
 
-/* Field Label */
-main.cals_teams.archive_team span.field-label{
-white-space:nowrap;
-display:inline-block;
-width:20px;
+main.cals_teams.archive_team .calsteams_phone span.field-label:after {
+  content: '\e801';
 }
 
-/* Office Location Font-Icon */
-main.cals_teams.archive_team .calsteams_office_location span.field-label:after{
-content:'\e800';
-font-family:fontello;
-font-weight:normal;
-font-style:normal;
+main.cals_teams.archive_team .calsteamswysiwygol span.field-label:after {
+  content: '\f0f7';
 }
 
-/* Phone Font-Icon */
-main.cals_teams.archive_team .calsteams_phone span.field-label:after{
-content:'\e801';
-font-family:fontello;
-font-weight:normal;
-font-style:normal;
+main.cals_teams.archive_team .calsteams_email span.field-label:after {
+  content: '\e805';
 }
 
-/* Email Font-Icon */
-main.cals_teams.archive_team .calsteams_email span.field-label:after{
-content:'\e802';
-font-family:fontello;
-font-weight:normal;
-font-style:normal;
+/*main.cals_teams.archive_team .calsteams_professional_title span.field-label:after {
+  content: '\e804';
+}*/
+
+main.cals_teams.archive_team .calsteams_url span.field-label:after {
+  content: '\e803';
 }
 
 /* Field Data */
 main.cals_teams.archive_team span.field-data{
 white-space: nowrap;
-font-size:16px;
+font-size:18px;
 }
 
+main.cals_teams.archive_team .member_wrapper .description {
+  font-size:16px;
+}
 
+main.cals_teams.archive_team .calsteamswysiwygol .field-data {
+  display:block;
+  margin-top:-28px;
+  position: relative;
+  left:24px;
+}
 
 /************************
   --- single-team.php ---
@@ -229,7 +232,7 @@ body.post-type-archive-team #content{
 /* Member Wrapper */
 main.cals_teams.archive_team .member_info_wrapper{
 background-color: #E5E5E5;
-padding: 0 20px 20px 20px;
+padding: 10px 20px 0;
 }
 
 
@@ -271,19 +274,9 @@ main.cals_teams.archive_team .member_wrapper a span {
 main.cals_teams.archive_team .member_wrapper a:hover > span {
   padding:10px 10px 10px;
 }
-main.cals_teams.archive_team .member_wrapper a {
-  box-sizing:border-box;
-  transition:.3s;
-  overflow: hidden;
-}
-main.cals_teams.archive_team .member_wrapper a:hover {
-  margin:0 -10px 0;
-  padding:10px;
-  transition:.3s;
-}
 
 
-/* OLD BRICKLAYER STUFF BELOW */
+/* BRICKLAYER STUFF BELOW */
 
 .bricklayer-column div.member_wrapper:first-of-type{
   background-color: #E5E5E5;

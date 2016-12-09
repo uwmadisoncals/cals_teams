@@ -79,7 +79,7 @@ get_header(); ?>
 			?>
 				<div class="member_wrapper">
 
-					<a href="<?php esc_url( the_permalink() ); ?>" style="background: url('<?php if($image_url){
+					<a class="member_headshot" href="<?php esc_url( the_permalink() ); ?>" style="background: url('<?php if($image_url){
 						echo $image_url ;
 					} else {
 						echo plugins_url() . '/cals_teams/includes/images/calsteams_placeholder.png' ;
@@ -87,51 +87,42 @@ get_header(); ?>
 						<span><?php echo the_title() ?></span>
 					</a>
 
-				<div class="member_info_wrapper">
+					<div class="member_info_wrapper">
 
-										<div class="member-body">
-
-											<div class="member-data-wrapper">
-											<?php
-										//using foreach
-										foreach ($mbox_fields as $key => $value) {
+									<div class="member-data-wrapper">
+										<?php foreach ($mbox_fields as $key => $value) {
 											$field_id = $value['id'];//field id name
-											$allowed_fields = array('calsteams_professional_title','calsteams_office_location','calsteams_email','calsteams_phone');
+											$allowed_fields = array('calsteams_professional_title','calsteams_email','calsteams_phone','calsteamswysiwygol');
 
 											if(!empty(get_post_meta($id,$field_id)[0]) && in_array($field_id,$allowed_fields) ){
-
-												?>
+											?>
 												<div class="member-data-field <?php echo $field_id; ?>">
-													<span class="field-label"></span>
-													<span class="field-data"><?php echo get_post_meta($id,$field_id)[0]; ?></span>
-												</div>
-
-												<?php
-
-											}
+														<span class="field-label"></span>
+														<span class="field-data"><?php if ($field_id != 'calsteamswysiwygol') {
+																echo get_post_meta($id,$field_id)[0];
+															} else {
+																echo nl2br(get_post_meta($id,$field_id)[0]);
+															}
+														?></span>
+													</div>
+											<?php
+												}
 
 										}// END foreach
 										?>
 
 										</div><!-- END .member-data-wrapper -->
 
-										</div><!--END .member-body -->
 
-
-
-					<div class="member-heading-wrapper">
-
-						<p class="description">
-						<?php
-							$length = 200; // characters
-							if (strlen($description) >= $length) {
-								echo substr($description, 0, $length) . '...';
-							} else {
-								echo $description;
-							}
-						?></p>
-
-					</div>
+									<p class="description">
+									<?php
+										$length = 280; // characters
+										if (strlen($description) >= $length) {
+											echo substr($description, 0, $length) . '...';
+										} else {
+											echo $description;
+										}
+									?></p>
 
 				</div><!-- END .member_info_wrapper  -->
 
