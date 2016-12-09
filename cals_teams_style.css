@@ -18,42 +18,42 @@
   }
 }
 */
- 
+
  [class^="icon-"]:before, [class*=" icon-"]:before {
   font-family: "fontello";
   font-style: normal;
   font-weight: normal;
   speak: none;
- 
+
   display: inline-block;
   text-decoration: inherit;
   width: 1em;
   margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
- 
+
   /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
- 
+
   /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
- 
+
   /* Animation center compensation - margins should be symmetric */
   /* remove if not needed */
   margin-left: .2em;
- 
+
   /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
- 
+
   /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
- 
+
   /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
- 
+
 .icon-commerical-building:before { content: '\e800'; } /* '' */
 .icon-phone:before { content: '\e801'; } /* '' */
 .icon-mail-alt:before { content: '\e802'; } /* '' */
@@ -65,7 +65,7 @@ main.cals_teams.archive_team{
 
 /* Archive Team Header  */
 main.cals_teams.archive_team header{
-	
+
 }
 
 /**************************************************** */
@@ -73,13 +73,14 @@ main.cals_teams.archive_team header{
 
 /* Member Grouping  */
 main.cals_teams.archive_team .member-grouping{
-/*display: flex;
+display: flex;
 flex-direction:row;
 flex-wrap:wrap;
 flex-grow:1;
-align-content:space-around;*/
+justify-content:space-around;
 margin: 20px 0 20px 0;
 }
+
 
 
 
@@ -128,6 +129,8 @@ main.cals_teams.archive_team .member-data-field{
 /* Field Label */
 main.cals_teams.archive_team span.field-label{
 white-space:nowrap;
+display:inline-block;
+width:20px;
 }
 
 /* Office Location Font-Icon */
@@ -209,7 +212,7 @@ body.single-team article.team .upper-container{
 /* wysiwg value styles */
 body.single-team article.team div.entry-content .team-item.wysiwyg > div.team-item-value{
 white-space:pre-wrap;
-line-height: 1.4; 
+line-height: 1.4;
 }
 
 /*  */
@@ -237,14 +240,50 @@ background-color: #E5E5E5;
 overflow: hidden;
 /*width:300px;*/
 
-
+flex:1 1 250px;
 max-width:280px;
 
-margin:0 auto;
+margin:5px;
 margin-top:10px;
 
 
 }
+main.cals_teams.archive_team .member_wrapper a {
+  position: relative;
+}
+main.cals_teams.archive_team .member_wrapper a span {
+  background:black;
+  background:rgba(0,0,0,0.4);
+  text-shadow: 1px 1px 2px black;
+  color:white;
+  position:absolute;
+  bottom:0;
+  left:0;right:0;
+  text-transform:uppercase;
+  padding: 10px 10px 5px;
+  /*border-radius: 0 10px 0 0;*/
+  font-size:1.3em;
+  text-align:center;
+  line-height: 1.2em;
+  display:block;
+  transition: .3s;
+}
+main.cals_teams.archive_team .member_wrapper a:hover > span {
+  padding:10px 10px 10px;
+}
+main.cals_teams.archive_team .member_wrapper a {
+  box-sizing:border-box;
+  transition:.3s;
+  overflow: hidden;
+}
+main.cals_teams.archive_team .member_wrapper a:hover {
+  margin:0 -10px 0;
+  padding:10px;
+  transition:.3s;
+}
+
+
+/* OLD BRICKLAYER STUFF BELOW */
 
 .bricklayer-column div.member_wrapper:first-of-type{
   background-color: #E5E5E5;
