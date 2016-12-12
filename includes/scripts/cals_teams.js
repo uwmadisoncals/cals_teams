@@ -7,6 +7,7 @@ jQuery(document).ready(function($) {
 
 	}
 
+
 	// Execute js on page single-team.php (from plugin template)
 	if($('body').is(".cals_team-single-team")){
 
@@ -17,18 +18,31 @@ jQuery(document).ready(function($) {
 		if( titleLen > 0 ){
 
 			$(".short-vals-container").each( function(){
-			
+
 				$("span.team-item-label:contains(First Name)").parent().css("display","none");
 
 				$("span.team-item-label:contains(Last Name)").parent().css("display","none");
 
 			});
 		}
+
+		function noNav() {
+			if($('#content').hasClass('has_nav')) {
+					// remove navigation spacing
+					$('#content').removeClass('has_nav');
+				}
+		}
+//		noNav();
+		setTimeout(noNav,0);
+
+
+
+
 	}
 
 	function insertWrap(){
 		$(".bricklayer-column").each( function(i){
-		
+
 			$(this).addClass('added');
 			//$(this).children().wrapAll("<div class='new' />");
 
@@ -41,8 +55,10 @@ jQuery(document).ready(function($) {
 	}
 
 	if($('body').is(".post-type-archive-team")){
+
+				$('body').addClass("page");
 		//$(".member_wrapper").wrapAll("<div class='new' />");
-		
+
 	/*	$(window).resize(function(){
 			var wWidth = $(window).width();
 			//console.log("resized! :" + wWidth );

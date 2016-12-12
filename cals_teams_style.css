@@ -62,18 +62,12 @@
 .icon-building:before { content: '\f0f7'; } /* '' */
 .icon-user:before { content: '\e804'; } /* '' */
 
-/* Archive Team Main */
-main.cals_teams.archive_team{
-	/*padding:0 5%;*/
-}
-
-/* Archive Team Header  */
-main.cals_teams.archive_team header{
-
-}
 
 /**************************************************** */
 
+.cals_teams .pagePadding {
+  padding: 0 2em 3em;
+}
 
 /* Member Grouping  */
 main.cals_teams.archive_team .member-grouping{
@@ -155,17 +149,20 @@ main.cals_teams.archive_team .calsteams_url span.field-label:after {
 main.cals_teams.archive_team span.field-data{
 white-space: nowrap;
 font-size:18px;
+line-height: 1;
 }
 
 main.cals_teams.archive_team .member_wrapper .description {
-  font-size:16px;
+  font-size:17px;
+  line-height: 1.3;
 }
 
 main.cals_teams.archive_team .calsteamswysiwygol .field-data {
   display:block;
-  margin-top:-28px;
+  margin-top:-22px;
   position: relative;
   left:24px;
+  line-height: 1.2;
 }
 
 /************************
@@ -226,33 +223,38 @@ order:0;
 /**************************************************** */
 
 body.post-type-archive-team #content{
+
   margin-top:0;
 }
 
 /* Member Wrapper */
 main.cals_teams.archive_team .member_info_wrapper{
 background-color: #E5E5E5;
-padding: 10px 20px 0;
+padding: 10px 15px 0 15px;
+flex: 1 1 auto;
 }
 
 
 
 /* Member Wrapper */
+
+main.cals_teams.archive_team .member-grouping {
+  flex-direction: row;
+}
 main.cals_teams.archive_team .member_wrapper{
-background-color: #E5E5E5;
-overflow: hidden;
-/*width:300px;*/
+  flex-flow:column;
+}
 
-flex:1 1 250px;
-max-width:280px;
-
-margin:5px;
-margin-top:10px;
-
-
+main.cals_teams.archive_team .member_wrapper{
+  background-color: #E5E5E5;
+  flex:0 1 255px;
+  margin:4px;
+  margin-top:10px;
+  display: flex;
 }
 main.cals_teams.archive_team .member_wrapper a {
   position: relative;
+  flex: 0 0 300px;
 }
 main.cals_teams.archive_team .member_wrapper a span {
   background:black;

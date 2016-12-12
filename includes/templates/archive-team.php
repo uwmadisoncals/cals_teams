@@ -83,7 +83,7 @@ get_header(); ?>
 						echo $image_url ;
 					} else {
 						echo plugins_url() . '/cals_teams/includes/images/calsteams_placeholder.png' ;
-					} ?>') no-repeat center center; background-size: cover; display:block; height:300px;">
+					} ?>') no-repeat center center; background-size: cover; display:block;">
 						<span><?php echo the_title() ?></span>
 					</a>
 
