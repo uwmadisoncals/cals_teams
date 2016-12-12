@@ -113,7 +113,7 @@ get_header(); ?>
 
 										</div><!-- END .member-data-wrapper -->
 
-
+								<?php if($description) { ?>
 									<p class="description">
 									<?php
 										$length = 280; // characters
@@ -123,7 +123,8 @@ get_header(); ?>
 											echo $description;
 										}
 									?></p>
-
+								<? } ?>
+								
 				</div><!-- END .member_info_wrapper  -->
 
 			</div><!-- END .member_wrapper -->

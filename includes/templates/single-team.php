@@ -9,7 +9,7 @@
 
 		include( WP_PLUGIN_DIR . '/cals_teams/includes/data/cals_teams_fields.php' ); //include Metabox and Metabox field group data
 
-		
+
 		$mbox_fields = $mbox['fields'];//Meta data for field groups
 		//logit($mbox_fields,'$mbox_fields');
 		//logit($mbox,'$mbox: ');
@@ -48,7 +48,7 @@
 
 			//////////////////////// INNER CONTENT ////////////////////////////////
 			?>
-			
+
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 			<header class="entry-header">
@@ -66,16 +66,16 @@
 					echo '<div class="upper-container">';
 
 					if(has_post_thumbnail()){
-					echo '<div class="image-wrapper";">';
+					echo '<div class="image-wrapper">';
 					the_post_thumbnail('full',array('class'=>'aligncenter'));
 					echo '</div>';
 				}else{
 
-					echo '<div class="image-wrapper";">';
+					echo '<div class="image-wrapper">';
 					the_post_thumbnail('full',array('class'=>'aligncenter')); ?>
 
 					<img class="member-thumbnail" alt="person placeholder image" src="<?php echo plugins_url() . '/cals_teams/includes/images/calsteams_placeholder.png'  ?>" width="150" height="150" />
-					
+
 					<?php
 					echo '</div>';
 				}
@@ -107,11 +107,11 @@
 										echo '</span></div>';
 
 									}
-									
+
 								}
 							}
 					}
-					echo '</div></div>';
+					echo '</div>';
 
 					foreach($plugin_template_obj->data as $_key_ => $_value_){
 
@@ -137,11 +137,12 @@
 										echo '</span></div>';
 
 									}
-									
+
 								}
 							}
 					}
 
+					echo '</div>';
 
 
 
@@ -176,8 +177,8 @@
 			</div><!-- .entry-footer -->
 
 		</article><!-- #post-## -->
-		<?php 
-			
+		<?php
+
 			/////////////////////////// END INNER CONTENT /////////////////////////////////
 
 			// If comments are open or we have at least one comment, load up the comment template.
@@ -202,5 +203,5 @@
 		</main><!-- .site-main -->
 	</div><!-- .content-area -->
 	</div><!-- .site-content-inner -->
-	
+
 <?php get_footer(); ?>
